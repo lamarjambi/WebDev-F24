@@ -1,0 +1,75 @@
+<!DOCTYPE html> <!--html type-->
+<html> 
+
+    <head> <!--content about the page-->
+        <meta charset="utf-8"> <!--alpahbet and fonts type shit-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--responsive behaivor-->
+        <title>Positioning</title>
+        <style type="type/css">
+
+            div {
+                min-height: 100px;
+            }
+
+            .red {
+                background-color: red;
+            }
+            .green {
+                background-color: green;
+            }
+            .yellow {
+                background-color: yellow;
+            }
+            .blue {
+                background-color: blue;
+            }
+            .relative {
+                position: relative;
+            }
+            .absulote {
+                position: absolute;
+            }
+            .fixed {
+                position: fixed;
+            }
+
+            .top {
+                top: 0px;
+            }
+            .bottom {
+                bottom: 0px;
+            }
+            .right {
+                right: 0px;
+            }
+            .left {
+                left: 0px;
+            }
+
+            .top-50 {
+                top: 50px;
+            }
+            .right-50 {
+                right: 50px;
+            }
+            .left-50 {
+                left: 50px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="red relative top-50">Relative</div>
+        <div class="green absulote top-50">Absolute positioned divs look for a parent element with a defined </div>
+        <div class="yellow fixed top-50">Fixed behaves similarly to absolute </div>
+
+        <div class="blue relative" style="width:500px; height: 500px">
+            when we have a relative parent, absolute or fixed position child elmes will position  
+        </div>
+
+        <div class="red absolute top-50 right-50">absolute relative parent</div>
+        <div class="green fixed bottom-50 left-50">fixed position same relative parents</div>
+
+    </body>
+
+</html>

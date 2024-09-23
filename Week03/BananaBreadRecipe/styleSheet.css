@@ -1,0 +1,62 @@
+/* CSS for Ba(nomnom) recipe webpage! */
+
+@import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* the following code should select the elements in the layer before ^ */
+html::before { 
+    content: "";
+    background: url("backgroundArt.png") no-repeat center center fixed;
+    background-size: cover; /* covers the entire page proportioanlly */
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* the layer before html{}^ */
+}
+
+
+body {
+    margin: 60px;
+    position: relative;
+    
+    font-family: "Cousine", verdana;
+    font-weight: 700; 
+}
+
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    margin: 0 8px;
+}
+
+strong {
+    color: #e3cc5b;
+    font-size: 20px;
+    text-shadow: /* the letter frame */
+        0.09em 0 black,
+        0 0.09em black,
+        -0.09em 0 black,
+        0 -0.09em black;
+}
+
+h4 {
+    text-align: center;
+}
+
+ul, ol {
+    margin-left: 10px;
+    padding: 10px;
+}
+

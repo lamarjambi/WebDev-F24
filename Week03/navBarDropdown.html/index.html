@@ -1,0 +1,73 @@
+<!DOCTYPE html> <!--html type-->
+<html> 
+
+    <head> <!--content about the page-->
+        <meta charset="utf-8"> <!--alpahbet and fonts type shit-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--responsive behaivor-->
+        <title>CSS navbar dropdown</title>
+        <style type="type/css">
+            body {
+                font-family: fantasy;
+                padding: 20px;
+                font-size: 13px;
+                text-align: center;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+            ul {
+                display: inline;
+                margin: 0;
+                padding: 15px 4px 17px 0;
+                list-style-type: none;
+                box-shadow: 10px 5px 5px black;
+            }
+
+            ul li {
+                /* never do this irl */
+                font: bold 12px/18px san-serif;
+                display: inline-block;
+                position: relative;
+                padding: 15px 10px;
+                background-color: #fff;
+                cursor: pointer;
+                /* applied to the base style state */
+                transition: all 0.9s;
+            }
+
+            ul:hover {
+                background-color: #555;
+                color: #fff;
+            }
+
+            /* nested ul */
+            ul li ul {
+                padding: 0;
+                position: absolute;
+                top: 48px;
+                left: 0;
+                width: 150px;
+                box-shadow: none;
+                display: none;
+                opacity: 0;
+                visibility: hidden;
+            }
+
+        </style>
+    </head>
+
+    <body> <!--content in the page-->
+        <ul>
+            <li>Link 1</li>
+            <li>Link 2</li>
+            <li>Link 3
+                <ul>
+                    <li>Sublink 1</li>
+                    <li>Sublink 2</li>
+                    <li>Sublink 3</li>
+                </ul>
+            </li>
+            <li>Link 4</li>
+        </ul>
+    </body>
+
+</html>
