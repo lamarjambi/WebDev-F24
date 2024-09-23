@@ -8,4 +8,4 @@ This homework applies the basics of CSS to the already-made webpage from week 01
 - [CSS Image Opacuity / Transparency](https://www.w3schools.com/css/css_image_transparency.asp)
 - [CSS - How can I make a font readable over any color?](https://stackoverflow.com/questions/23968961/css-how-can-i-make-a-font-readable-over-any-color)
 
-  *Banana and stars background was drawn by me!*
+*Banana and stars background was drawn by me!*
