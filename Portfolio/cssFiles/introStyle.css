@@ -1,0 +1,73 @@
+/* global styles */
+* {
+    box-sizing: border-box;
+    background-color: rgba(253, 210, 59, 1);
+}
+
+body {
+    font-family: "Press Start 2P", system-ui;
+    font-style: normal;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    /* background-color: rgba(253, 210, 59, 1); */
+    padding: 20px;
+}
+
+.center-text {
+    text-align: center;
+    margin-bottom: 45px; 
+}
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 200px;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 5.5%;
+    overflow: hidden; 
+    transition: transform 0.3s ease, margin 0.3s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+}
+
+/* the percenetages are like the timeline for animation, 0% being the start and 100% the end */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.card:hover {
+    animation: float 1.5s ease-in-out infinite; /* animation: is only available when we use @keyframe */
+}
+
+strong {
+    color: #547dfd;
+    text-shadow: /* the letter frame */
+        0.09em 0 black,
+        0 0.09em black,
+        -0.09em 0 black,
+        0 -0.09em black;
+}
