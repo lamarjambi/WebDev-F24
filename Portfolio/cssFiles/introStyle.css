@@ -22,6 +22,22 @@ body {
     margin-bottom: 45px; 
 }
 
+strong {
+    color: #547dfd;
+    text-shadow: /* the letter frame */
+        0.09em 0 black,
+        0 0.09em black,
+        -0.09em 0 black,
+        0 -0.09em black;
+}
+
+/* .typewriter {
+    border-right: solid rgba(225, 225, 225, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    width: 19ch;
+} */
+
 .card-container {
     display: flex;
     gap: 20px;
@@ -63,11 +79,4 @@ body {
     animation: float 1.5s ease-in-out infinite; /* animation: is only available when we use @keyframe */
 }
 
-strong {
-    color: #547dfd;
-    text-shadow: /* the letter frame */
-        0.09em 0 black,
-        0 0.09em black,
-        -0.09em 0 black,
-        0 -0.09em black;
-}
+
