@@ -1,0 +1,51 @@
+/* global styles */
+* {
+    box-sizing: border-box;
+    background-color: rgba(253, 210, 59, 1);
+}
+
+html,
+body {
+    font-family: "Press Start 2P", system-ui;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+img {
+    width: 100%;
+    height: auto;
+  }
+
+.hero {
+    width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+.container {
+  padding: 5%;
+  height: 90vh;
+  width: 90vw;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  height: 100%;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+}
+
+.grid-item {
+  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  position: relative; /* Enables absolute positioning of child elements like images */
+}
