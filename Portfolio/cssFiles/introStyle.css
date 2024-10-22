@@ -31,12 +31,29 @@ strong {
         0 -0.09em black;
 }
 
-/* .typewriter {
-    border-right: solid rgba(225, 225, 225, 0.7);
+.typewriter {
+    color: #547dfd;
+    border-right: .15em solid rgba(225, 225, 225, 0.7);
     white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
     overflow: hidden;
-    width: 19ch;
-} */
+    width: 22ch;
+    margin-bottom: 3%;
+    animation: 
+        typing 3.5s steps(19, end),
+        blink-carat .5s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 } /* zero chars */
+    to { width: 22ch } /* full chars */
+}
+
+@keyframes blink-carat {
+    from, to { border-color: transparent }
+    50% { border-color: rgba(0, 0, 0, 0.7) }
+}
 
 .card-container {
     display: flex;

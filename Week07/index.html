@@ -1,0 +1,103 @@
+<!DOCTYPE html> <!--html type-->
+<html> 
+
+    <head> <!--content about the page-->
+        <meta charset="utf-8"> <!--alpahbet and fonts type shit-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--responsive behaivor-->
+        <title>JS Data Types</title>
+        <script type="text/javascript">
+            // declare variables
+            var myVar;
+            // assign value to var
+            myVar = '20';
+            var myVar2 = 15;
+
+            // console.log(myVar);
+            // console.log(typeof myVar);
+
+            var multiple = myVar*myVar2;
+            // console.log(multiple);
+            // console.log(typeof multiple);
+
+            var message = 'hello';
+            var recipient = 'world';
+
+            // console.log(message + " " + recipient);
+
+            // sometimes we want to insert a variable inside a longer message to display to a user
+            var temp = 55;
+            // console.log("Today\'s temrature in Brooklyn is: " + temp + " degrees F");
+            const temp2 = 65;
+            const isOn = true;
+            let conditionalMessage;
+
+            if (isOn === true) {
+                conditionalMessage = 'The lights are on :]'
+            } else {
+                conditionalMessage = "The lights are off ):<"
+            }
+
+            // alert on the web page (banner thingy)
+            // alert(conditionalMessage);
+            const myNum = 80;
+            // template literals (dolla sign boys)
+            const anotherMessage = `My favorite number is ${myNum}. So my double favorite number is ${myNum*2}!`;
+
+            // console.log(anotherMessage);
+
+            // function printMessage() {
+            //     console.log("Hello World!");
+            // }
+
+            // printMessage()
+
+            // same shit; assigns a var to a function
+            // const printMessage2 = () => {
+            //     console.log("Hello World!")
+            // };
+
+            // printMessage2();
+            
+            let sum;
+            function sumVals(a, b) {
+                sum = a + b;
+                return sum;
+            }
+
+            var newNum = sumVals(9372, 29723);
+            // console.log(newNum);
+
+            var isOff = true;
+
+            function switchOnOff() {
+                if (isOff === true) {
+                    // == returns for bool and "true/false"
+                    alert(`isOff is currently ${isOff}. Switching to false now`);
+                    isOff  = false;
+                } else if (isOff === false) {
+                    alert(`isOff is currently ${isOff}. Switching to true now`);
+                    isOff = true;
+                } else {
+                    alert(`tehe`)
+                }
+            }
+
+            // switchOnOff();
+
+            function countToN(num) {
+                for (var i = 1; i <= num; i++) {
+                    console.log(i);
+                }
+            }
+
+            countToN(6);
+        </script>
+    </head>
+
+    <body> <!--content in the page-->
+        
+    </body>
+
+
+
+</html>

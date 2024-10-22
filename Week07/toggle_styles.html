@@ -1,0 +1,43 @@
+<!DOCTYPE html> <!--html type-->
+<html> 
+
+    <head> <!--content about the page-->
+        <meta charset="utf-8"> <!--alpahbet and fonts type shit-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--responsive behaivor-->
+        <title>HTML Boilerplate</title>
+
+        <style>
+            .active {
+                background-color: #006fff;
+                color: white;
+                font-size: 60px;
+            }
+        </style>
+        <script>
+            // can use this for hiding 
+            function toggleActive() {
+                // grab and store the h1 element in the page as a var named element
+                const element = document.getElementById('changeMe');
+                // console.log(element);
+                // check if elememt has the activve class applied
+                if (element.classList.contains(`active`)) {
+                    // remove from classList
+                    element.classList.remove(`active`);
+                    element.innerHTML = 'I am not active  anymore):';
+                } else {
+                    element.classList.add(`active`);
+                    element.innerHTML = 'WOOO! Now I am ACTIVE!';
+                }
+            }
+        </script>
+    </head>
+
+    <body> <!--content in the page-->
+        <h1 id="changeMe" onClick="toggleActive()" class="active"> 
+            This is a heading 1. Click me to change CSS class and HTML content!
+        </h1> <!--one h1 type per page-->
+    </body>
+
+
+
+</html>
