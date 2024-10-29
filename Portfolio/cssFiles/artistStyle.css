@@ -37,7 +37,7 @@ img {
 /* :desc: followed a youtube tutorial and tried to 
 give my own spin */
 .vertical-container {
-  top: 150px;
+  top: 100px;
   left: 5%;
   height: 70px;
   width: 70px;
@@ -153,6 +153,7 @@ ul.nav-items {
 }
 
 .toggle-box {
+  order: -1;
   position: relative;
   display: flex;
   align-items: center;
@@ -305,12 +306,13 @@ ul.nav-items {
 }
 
 .grid-item {
-  background-color: blueviolet;
+  background-color: #c9a0df;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 15px;
   position: relative; 
+  overflow: hidden;
 }
 
 .grid-item img {
@@ -319,6 +321,24 @@ ul.nav-items {
     height: 100%;
     object-fit: cover; 
     overflow: hidden;
+}
+
+.grid-item:hover .overlay-text {
+  opacity: 1; 
+}
+
+.grid-item .overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(129, 201, 80, 0.7);
+  color: #000000;
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+  opacity: 0; 
+  transition: opacity 0.3s ease; 
 }
 
 .grid-item img:hover {
@@ -446,28 +466,41 @@ ul.nav-items {
 /* ============= END OF FOOTER AND SVG CODES ============= */
 
 @media (max-width: 768px) {
-  /*  */
+  /* ============= NAVBAR STUFF ============= */
   .vertical-container {
     position: fixed;
-    top: 15%; 
+    top: 15%;
     left: 50%;
+    flex-direction: row;
     transform: translateX(-50%); /* center */
+    display:flex;
+  }
+
+  .nav-items-top {
+    display: none;
   }
 
   .nav-items {
-    position: relative; 
-    top: 0; 
+    position: relative;
+    top: 0;
     left: 0;
-    width: auto; 
+    width: 90%;
     padding: 0;
     list-style: none;
     pointer-events: all;
-    /* display: flex; */
-    flex-direction: row; 
+    display: flex; /* added */
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 15px; 
     background: #faf0dd;
+    display: none; 
+    margin-right: 1em;
+  }
+
+  .nav-items svg {
+    width: 20px;
+    height: 20px;
+    color: #ec6ba7; 
   }
 
   .nav-items a {
@@ -477,22 +510,30 @@ ul.nav-items {
     padding: 5px;
   }
 
-  .nav-items svg {
-    width: 20px;
-    height: 20px;
-  }
-
   .vertical-container.active {
     width: 375px;
-    height: 70px; 
+    height: 70px;
   }
 
   .vertical-container.active .nav-items {
     opacity: 1;
     pointer-events: all;
-    display: inline-block;
+    display: flex; 
   }
 
+  .nav-items-bottom {
+    display: none; 
+  }
+
+  /* fixing mobile issue with not showing icons w/ z-index */
+  .toggle-box {
+    z-index: 1000; 
+    width: 20%;
+  }
+
+  /* ============= END OF NAVBAR STUFF ============= */
+
+  /* ============= HEADER + INTRO TEXTBOX ============= */
   .about {
     flex-direction: column;
     padding: 20px;
@@ -517,7 +558,9 @@ ul.nav-items {
     flex-direction: column; 
     gap: 2rem;  
   }
+  /* ============= END OF HEADER + INTRO TEXTBOX ============= */
 
+  /* ============= PROJECTS (GRID) ============= */
   .grid {
     display: flex;
     flex-direction: column;
@@ -558,7 +601,9 @@ ul.nav-items {
     object-fit: cover;
     overflow: hidden;
   }
+  /* ============= END OF PROJECTS (GRID) ============= */
 
+  /* ============= SKILLS ============= */
   .skills-section {
     width: 90%;
   }
@@ -571,7 +616,9 @@ ul.nav-items {
   .category-name {
     margin-bottom: 10px;
   }
+  /* ============= END OF SKILLS ============= */
 
+  /* ============= FOOTER ============= */
   .footer-content {
     padding: 0 1rem;
   }

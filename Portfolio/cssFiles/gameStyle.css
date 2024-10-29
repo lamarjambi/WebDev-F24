@@ -1,7 +1,10 @@
-/* global styles */
+/* Scripter: Jambo 
+DM 2193 - Midterm Project 1
+anything commenetd is a failed attempt at something :P */
 
 @import url('https://fonts.googleapis.com/css2?family=Dokdo&display=swap');
 
+/* global styles */
 * {
   margin: 0;
   padding: 0;
@@ -29,12 +32,12 @@ img {
   height: 80px; 
 }
 
-.section-spacer {
-  height: 80px;
-}
 
+/* ============= NAVBAR STUFF ============= */
+/* :desc: followed a youtube tutorial and tried to 
+give my own spin */
 .vertical-container {
-  top: 15%;
+  top: 100px;
   left: 5%;
   height: 70px;
   width: 70px;
@@ -44,13 +47,109 @@ img {
   transition: 0.4s ease;
   z-index: 1000;
   overflow: hidden;
+  /* cursor: grab;  */
+}
+
+/* #draggble {
+  cursor: move;
+} */
+
+.vertical-container.active {
+  height: 355px;
+  background-color: #faf0dd;
+  cursor: grabbing;
+}
+
+/* .vertical-container.active {
+  height: 420px;
+} */
+
+.nav-items {
+  position: absolute;
+  top: 85px; 
+  left: 0;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 35px; 
+  background: #faf0dd;
 }
 
-.vertical-container.active {
-  height: 420px;
+.nav-items li {
+  width: 100%;
+  text-align: center;
+  background: #faf0dd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .nav-items img {
+  width: 40px;  
+  height: auto;
+  background-color: #faf0dd;
+  display: block;
+  margin: 0 auto;  
+} */
+
+.nav-items svg {
+  background-color: #faf0dd;
+  fill: currentColor; 
+  width: 24px;
+  height: 24px;
+} 
+
+ul.nav-items {
+  background: #faf0dd;
+  justify-content: space-between;
+}
+
+.vertical-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #faf0dd;
+  z-index: -1;
+}
+
+.nav-items a {
+  color: #ec6ba7;
+  text-decoration: none;
+  font-family: 'Press Start 2P', cursive; 
+  font-size: 9px; 
+  transition: color 0.3s ease;
+  display: flex;
+  padding: 5px 0;
+  background: #faf0dd;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-items a:hover {
+  color: #ec6ba7;
+}
+
+.nav-items .social-icon {
+  color: #ec6ba7; 
+  transition: color 0.3s ease;
+}
+
+.nav-items .social-icon:hover {
+  color: #547dfd; 
+}
+
+.vertical-container.active .nav-items {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .toggle-box {
@@ -92,127 +191,22 @@ img {
   transition: 0.3s ease;
 }
 
-/* Animation for active state */
 .toggle-box.active .icon {
-  transform: translate(-50%, -50%) rotate(45deg); /* Rotate by 45 degrees */
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .toggle-box.active .icon::before {
-  transform: translate(-50%, -50%) rotate(0deg); /* Rotate by -45 degrees */
+  color: red;
+  transform: translate(-50%, -50%) rotate(0deg); 
 }
 
 .toggle-box:hover .icon,
 .toggle-box:hover .icon::before {
   background-color: #ec6ba7;
 }
+/* ============= END OF NAVBAR ============= */
 
-.nav-items {
-  position: absolute;
-  top: 85px; 
-  left: 0;
-  width: 100%;
-  padding: 0;
-  list-style: none;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 35px; 
-  background: #faf0dd;
-}
-
-.nav-items li {
-  width: 100%;
-  text-align: center;
-  background: #faf0dd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.nav-items img {
-  width: 40px;  
-  height: auto;
-  background-color: #faf0dd;
-  display: block;
-  margin: 0 auto;  
-}
-
-.nav-items svg {
-  background-color: #faf0dd;
-  fill: currentColor; 
-  width: 24px;
-  height: 24px;
-} 
-
-.vertical-container {
-  top: 150px;
-  left: 5%;
-  height: 70px;
-  width: 70px;
-  background-color: #faf0dd; 
-  border-radius: 50px;
-  position: fixed;
-  transition: 0.4s ease;
-  z-index: 1000;
-  overflow: hidden;
-  cursor: grab; 
-}
-
-ul.nav-items {
-  background: #faf0dd;
-  justify-content: space-between;
-}
-
-.vertical-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #faf0dd;
-  z-index: -1;
-}
-
-.nav-items a {
-  color: #ec6ba7;
-  text-decoration: none;
-  font-family: 'Press Start 2P', cursive; 
-  font-size: 9px; 
-  transition: color 0.3s ease;
-  display: flex;
-  padding: 5px 0;
-  background: #faf0dd;
-  justify-content: center;
-  align-items: center;
-}
-
-.nav-items a:hover {
-  color: #ec6ba7;
-}
-
-.nav-items .social-icon {
-  color: #ec6ba7; 
-  transition: color 0.3s ease;
-}
-
-.nav-items .social-icon:hover {
-  color: #d84f8b; 
-}
-
-.vertical-container.active .nav-items {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.vertical-container.active {
-  height: 355px;
-  background-color: #faf0dd;
-  cursor: grabbing;
-}
-
+/* ============= HEADER + INTRO TEXTBOX ============= */
 .hero {
   width: 100vw;
   max-height: 100vh;
@@ -253,6 +247,7 @@ ul.nav-items {
   -webkit-text-stroke: 1px #000000; 
 }
 
+/* image */
 .about div:last-child {
   flex: 1;
   display: flex;
@@ -265,8 +260,9 @@ ul.nav-items {
   height: auto;
   border-radius: 5.5%;
 }
+/* ============= END OF HEADER + INTRO TEXTBOX ============= */
 
-
+/* ============= PROJECTS (GRID) ============= */
 .project-section {
   font-family: "Press Start 2P", system-ui;
   width: 65%;
@@ -309,12 +305,13 @@ ul.nav-items {
 }
 
 .grid-item {
-  background-color: #547dfd;
+  background-color: #c9a0df;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 15px;
   position: relative; 
+  overflow: hidden;
 }
 
 .grid-item img {
@@ -323,6 +320,24 @@ ul.nav-items {
     height: 100%;
     object-fit: cover; 
     overflow: hidden;
+}
+
+.grid-item .overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(129, 201, 80, 0.7);
+  color: #000000;
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+  opacity: 0; 
+  transition: opacity 0.3s ease; 
+}
+
+.grid-item:hover .overlay-text {
+  opacity: 1; 
 }
 
 .grid-item img:hover {
@@ -358,7 +373,9 @@ ul.nav-items {
   grid-row: span 1;
   grid-column: span 2;
 }
+/* ============= END OF PROJECTS (GRID) ============= */
 
+/* ============= SKILLS ============= */
 .skills-section {
   width: 65%;
   margin: auto;
@@ -403,12 +420,14 @@ ul.nav-items {
 .skill-item:hover {
   background-color: rgba(216, 79, 139, 0.2);
 }
+/* ============= END OF SKILLS ============= */
 
+/* ============= FOOTER AND SVG ============= */
 .footer {
   background-color: rgba(253, 210, 59, 1);
   color: #ec6ba7;
   padding: 2rem 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Dokdo', 'Press Start 2P';
 }
 
 .footer-content {
@@ -443,8 +462,77 @@ ul.nav-items {
 .copyright p {
   margin: 0.25rem 0;
 }
+/* ============= END OF FOOTER AND SVG CODES ============= */
 
 @media (max-width: 768px) {
+  /* ============= NAVBAR STUFF ============= */
+  .vertical-container {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    flex-direction: row;
+    transform: translateX(-50%); /* center */
+    display:flex;
+  }
+
+  .nav-items-top {
+    display: none;
+  }
+
+  .nav-items {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 90%;
+    padding: 0;
+    list-style: none;
+    pointer-events: all;
+    display: flex; /* added */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: #faf0dd;
+    display: none; 
+    margin-right: 1em;
+  }
+
+  .nav-items svg {
+    width: 20px;
+    height: 20px;
+    color: #ec6ba7; 
+  }
+
+  .nav-items a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .vertical-container.active {
+    width: 375px;
+    height: 70px;
+  }
+
+  .vertical-container.active .nav-items {
+    opacity: 1;
+    pointer-events: all;
+    display: flex; 
+  }
+
+  .nav-items-bottom {
+    display: none; 
+  }
+
+  /* fixing mobile issue with not showing icons w/ z-index */
+  .toggle-box {
+    z-index: 1000; 
+    width: 20%;
+  }
+
+  /* ============= END OF NAVBAR STUFF ============= */
+
+  /* ============= HEADER + INTRO TEXTBOX ============= */
   .about {
     flex-direction: column;
     padding: 20px;
@@ -469,7 +557,9 @@ ul.nav-items {
     flex-direction: column; 
     gap: 2rem;  
   }
+  /* ============= END OF HEADER + INTRO TEXTBOX ============= */
 
+  /* ============= PROJECTS (GRID) ============= */
   .grid {
     display: flex;
     flex-direction: column;
@@ -481,7 +571,7 @@ ul.nav-items {
     font-family: "Press Start 2P", system-ui;
     width: 90%;
     height: auto;
-    margin-bottom: 6600px;
+    margin-bottom: 14150px;
   }
 
   .grid-item {
@@ -510,7 +600,9 @@ ul.nav-items {
     object-fit: cover;
     overflow: hidden;
   }
+  /* ============= END OF PROJECTS (GRID) ============= */
 
+  /* ============= SKILLS ============= */
   .skills-section {
     width: 90%;
   }
@@ -523,7 +615,9 @@ ul.nav-items {
   .category-name {
     margin-bottom: 10px;
   }
+  /* ============= END OF SKILLS ============= */
 
+  /* ============= FOOTER ============= */
   .footer-content {
     padding: 0 1rem;
   }
