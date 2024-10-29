@@ -2,16 +2,16 @@
 
 Walkthrough of Jambo's Habitat :]
 ---
-1. Intro page!
+Intro page!
 *Pick your fighter; which side of me would you like to see? Artist, Developer, or Game Designer?*
 
-- Artistic Habitat
+1. Artistic Habitat
 * The juicier part -- more projects there! 
 
-- Developer Habitat
+2. Developer Habitat
 * Not much content -- what kind of projects would you add here anyways ):
 
-- Game Developer Habitat
+3. Game Developer Habitat
 * Mixture of both, since it requires both, y'know..
 
 ---
