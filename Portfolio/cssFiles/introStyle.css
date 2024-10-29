@@ -48,6 +48,7 @@ strong {
 @keyframes typing {
     from { width: 0 } /* zero chars */
     to { width: 22ch } /* full chars */
+    
 }
 
 @keyframes blink-carat {

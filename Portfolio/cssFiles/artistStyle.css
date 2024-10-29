@@ -1,7 +1,10 @@
-/* global styles */
+/* Scripter: Jambo 
+DM 2193 - Midterm Project 1
+anything commenetd is a failed attempt at something :P */
 
 @import url('https://fonts.googleapis.com/css2?family=Dokdo&display=swap');
 
+/* global styles */
 * {
   margin: 0;
   padding: 0;
@@ -29,12 +32,12 @@ img {
   height: 80px; 
 }
 
-.section-spacer {
-  height: 80px;
-}
 
+/* ============= NAVBAR STUFF ============= */
+/* :desc: followed a youtube tutorial and tried to 
+give my own spin */
 .vertical-container {
-  top: 15%;
+  top: 150px;
   left: 5%;
   height: 70px;
   width: 70px;
@@ -44,13 +47,109 @@ img {
   transition: 0.4s ease;
   z-index: 1000;
   overflow: hidden;
+  /* cursor: grab;  */
+}
+
+/* #draggble {
+  cursor: move;
+} */
+
+.vertical-container.active {
+  height: 355px;
+  background-color: #faf0dd;
+  cursor: grabbing;
+}
+
+/* .vertical-container.active {
+  height: 420px;
+} */
+
+.nav-items {
+  position: absolute;
+  top: 85px; 
+  left: 0;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 35px; 
+  background: #faf0dd;
 }
 
-.vertical-container.active {
-  height: 420px;
+.nav-items li {
+  width: 100%;
+  text-align: center;
+  background: #faf0dd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .nav-items img {
+  width: 40px;  
+  height: auto;
+  background-color: #faf0dd;
+  display: block;
+  margin: 0 auto;  
+} */
+
+.nav-items svg {
+  background-color: #faf0dd;
+  fill: currentColor; 
+  width: 24px;
+  height: 24px;
+} 
+
+ul.nav-items {
+  background: #faf0dd;
+  justify-content: space-between;
+}
+
+.vertical-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #faf0dd;
+  z-index: -1;
+}
+
+.nav-items a {
+  color: #ec6ba7;
+  text-decoration: none;
+  font-family: 'Press Start 2P', cursive; 
+  font-size: 9px; 
+  transition: color 0.3s ease;
+  display: flex;
+  padding: 5px 0;
+  background: #faf0dd;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-items a:hover {
+  color: #ec6ba7;
+}
+
+.nav-items .social-icon {
+  color: #ec6ba7; 
+  transition: color 0.3s ease;
+}
+
+.nav-items .social-icon:hover {
+  color: #547dfd; 
+}
+
+.vertical-container.active .nav-items {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .toggle-box {
@@ -97,121 +196,17 @@ img {
 }
 
 .toggle-box.active .icon::before {
-  transform: translate(-50%, -50%) rotate(30deg); 
+  color: red;
+  transform: translate(-50%, -50%) rotate(0deg); 
 }
 
 .toggle-box:hover .icon,
 .toggle-box:hover .icon::before {
   background-color: #ec6ba7;
 }
+/* ============= END OF NAVBAR ============= */
 
-.nav-items {
-  position: absolute;
-  top: 85px; 
-  left: 0;
-  width: 100%;
-  padding: 0;
-  list-style: none;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 35px; 
-  background: #faf0dd;
-}
-
-.nav-items li {
-  width: 100%;
-  text-align: center;
-  background: #faf0dd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.nav-items img {
-  width: 40px;  
-  height: auto;
-  background-color: #faf0dd;
-  display: block;
-  margin: 0 auto;  
-}
-
-.nav-items svg {
-  background-color: #faf0dd;
-  fill: currentColor; 
-  width: 24px;
-  height: 24px;
-} 
-
-.vertical-container {
-  top: 150px;
-  left: 5%;
-  height: 70px;
-  width: 70px;
-  background-color: #faf0dd; 
-  border-radius: 50px;
-  position: fixed;
-  transition: 0.4s ease;
-  z-index: 1000;
-  overflow: hidden;
-  cursor: grab; 
-}
-
-ul.nav-items {
-  background: #faf0dd;
-  justify-content: space-between;
-}
-
-.vertical-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #faf0dd;
-  z-index: -1;
-}
-
-.nav-items a {
-  color: #ec6ba7;
-  text-decoration: none;
-  font-family: 'Press Start 2P', cursive; 
-  font-size: 9px; 
-  transition: color 0.3s ease;
-  display: flex;
-  padding: 5px 0;
-  background: #faf0dd;
-  justify-content: center;
-  align-items: center;
-}
-
-.nav-items a:hover {
-  color: #ec6ba7;
-}
-
-.nav-items .social-icon {
-  color: #ec6ba7; 
-  transition: color 0.3s ease;
-}
-
-.nav-items .social-icon:hover {
-  color: #d84f8b; 
-}
-
-.vertical-container.active .nav-items {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.vertical-container.active {
-  height: 355px;
-  background-color: #faf0dd;
-  cursor: grabbing;
-}
-
+/* ============= HEADER + INTRO TEXTBOX ============= */
 .hero {
   width: 100vw;
   max-height: 100vh;
@@ -265,8 +260,9 @@ ul.nav-items {
   height: auto;
   border-radius: 5.5%;
 }
+/* ============= END OF HEADER + INTRO TEXTBOX ============= */
 
-
+/* ============= PROJECTS (GRID) ============= */
 .project-section {
   font-family: "Press Start 2P", system-ui;
   width: 65%;
@@ -358,7 +354,9 @@ ul.nav-items {
   grid-row: span 1;
   grid-column: span 2;
 }
+/* ============= END OF PROJECTS (GRID) ============= */
 
+/* ============= SKILLS ============= */
 .skills-section {
   width: 65%;
   margin: auto;
@@ -403,7 +401,9 @@ ul.nav-items {
 .skill-item:hover {
   background-color: rgba(216, 79, 139, 0.2);
 }
+/* ============= END OF SKILLS ============= */
 
+/* ============= FOOTER AND SVG ============= */
 .footer {
   background-color: rgba(253, 210, 59, 1);
   color: #ec6ba7;
@@ -443,8 +443,56 @@ ul.nav-items {
 .copyright p {
   margin: 0.25rem 0;
 }
+/* ============= END OF FOOTER AND SVG CODES ============= */
 
 @media (max-width: 768px) {
+  /*  */
+  .vertical-container {
+    position: fixed;
+    top: 15%; 
+    left: 50%;
+    transform: translateX(-50%); /* center */
+  }
+
+  .nav-items {
+    position: relative; 
+    top: 0; 
+    left: 0;
+    width: auto; 
+    padding: 0;
+    list-style: none;
+    pointer-events: all;
+    /* display: flex; */
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    gap: 15px; 
+    background: #faf0dd;
+  }
+
+  .nav-items a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .nav-items svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .vertical-container.active {
+    width: 375px;
+    height: 70px; 
+  }
+
+  .vertical-container.active .nav-items {
+    opacity: 1;
+    pointer-events: all;
+    display: inline-block;
+  }
+
   .about {
     flex-direction: column;
     padding: 20px;

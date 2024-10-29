@@ -98,7 +98,7 @@ img {
 }
 
 .toggle-box.active .icon::before {
-  transform: translate(-50%, -50%) rotate(30deg); /* Rotate by -45 degrees */
+  transform: translate(-50%, -50%) rotate(0deg); /* Rotate by -45 degrees */
 }
 
 .toggle-box:hover .icon,
@@ -304,7 +304,7 @@ ul.nav-items {
   grid-template-columns: repeat(8, 1fr);
   grid-gap: 20px;
   width: 100%;
-  height: 200vh;
+  height: 120vh;
   max-width: 500vw;
 }
 
