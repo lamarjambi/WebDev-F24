@@ -3,6 +3,7 @@
 Walkthrough of Jambo's Habitat :]
 ---
 Intro page!
+
 *Pick your fighter; which side of me would you like to see? Artist, Developer, or Game Designer?*
 
 1. Artistic Habitat
@@ -19,3 +20,7 @@ Intro page!
 
 ---
 
+All the pages will have the same format and style, but with their own touch and descriptions, backgrounds, doodles, and etc. (if time is on my side..) 
+
+--- 
+Did not focus on JavaScrit, for now, as I wanted to completely understand the foundations of HTML/CSS + and I'd love to use React on my portfolio, too :3
