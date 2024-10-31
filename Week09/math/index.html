@@ -1,0 +1,82 @@
+<!DOCTYPE html> <!--html type-->
+<html> 
+
+    <head> <!--content about the page-->
+        <meta charset="utf-8"> <!--alpahbet and fonts type shit-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--responsive behaivor-->
+        <title>JS Math Methods</title>
+        <script type="text/javascript">
+            const x = 15;
+            const y = 35;
+            let z;
+            z = 10.5;
+
+            console.log(x + y);
+            console.log(x - y);
+            console.log(x * y);
+            console.log(x / y);
+
+            console.log(10 % 3);
+            
+            console.log((x+y) * (y-1));
+
+            // x++;
+            // y--;
+
+            var k = 2.25;
+            // Mayh.floor(num) - round DOWN
+            console.log("Floor k = ", Math.floor(k))
+            console.log(Math.floor(3.9))
+
+            console.log("Ceil k = ", Math.ceil(k)) 
+            
+            var num1 = 2.2;
+            var num2 = 2.7;
+
+            console.log("num1 and num2 = ", Math.round(num1), Math.round(num2));
+
+            console.log(Math.random());
+
+            var yn = Math.round(Math.random()); // 0 or 1
+
+            console.log(yn);
+
+            if (yn === 0) {
+                console.log('false');
+            } else {
+                console.log('true');
+            }
+
+            // helper function to return smth between 0 and 1
+            function randNum(max) {
+                var rn = Math.round(max * Math.random());
+                // console.log(rn);
+                return rn;
+            }
+
+            var q = randNum(34);
+
+            console.log(q);
+
+            // global variable 
+            var test;
+            
+            function randNumRange(min, max) {
+                var rn = Math.round(Math.random() * (max-min) + min);
+
+                // test = rn
+
+                return rn;
+            }
+
+            var rand1 = randNumRange(20, 30);
+            var rand2 = randNumRange(55, 177);
+            
+            console.log(rand1, rand2);
+        </script>
+    </head>
+
+    <body> <!--content in the page-->
+    </body>
+
+</html>

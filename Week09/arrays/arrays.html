@@ -1,0 +1,42 @@
+<!DOCTYPE html> <!--html type-->
+<html> 
+
+    <head> <!--content about the page-->
+        <meta charset="utf-8"> <!--alpahbet and fonts type shit-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--responsive behaivor-->
+        <title>JS Arrays</title>
+        <script type="text/javascript">
+            let months;
+            // console.log(months);
+
+            months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            console.log(months.length);
+
+            var last = months.pop()
+            console.log(months.length, last);
+
+            console.log(months[1]);
+            
+            months.push(last);
+
+            console.log(' ');
+
+            for (var i = 0; i < months.length; i++) {
+                console.log(`month: ${months[i]}`);
+            }
+
+            // for (var i = months.length; i > 0; i--) {
+            //     var popped = months.pop();
+            //     console.log(`month: ${popped}, ${months.length}`);
+            // }
+
+            var ri = Math.floor(Math.random() * months.length);
+            console.log(months[ri]);
+
+        </script>
+    </head>
+
+    <body> 
+    </body>
+
+</html>
