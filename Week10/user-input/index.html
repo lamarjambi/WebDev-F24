@@ -1,0 +1,95 @@
+<!DOCTYPE html> <!--html type-->
+<html> 
+
+    <head> <!--content about the page-->
+        <meta charset="utf-8"> <!--alpahbet and fonts type shit-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--responsive behaivor-->
+        <title>User Input</title>
+        <style type="text/css">
+            h1 {
+                text-transform: uppercase;
+            }
+
+            .red {
+                color: red;
+            }
+
+            .green {
+                color: green;
+            }
+
+            .blue {
+                color: blue;
+            }
+
+            .purpule {
+                color: purple;
+            }
+        </style>
+
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                const myBtn = document.getElementById('chnageBtn');
+                myBtn.addEventListener('click', pickAClass);
+            });
+
+            function pickAClass() {
+                // grab user num input
+                const userNum = document.getElementById('num');
+                console.log(typeof userNum.value);
+                const n = parseInt(userNum.value);
+                console.log(typeof n);
+
+                // grab h1 element
+                const h = document.getElementById('changeMe');
+
+                // instead of having a list of long conditionals, use switch :3
+
+                switch(n) {
+                    case 0:
+                        h.className = 'red'
+                        break;
+                    
+                        case 1:
+                            h.className = 'green'
+                            break;
+
+                        case 2:
+                            h.className = 'blue'
+                            break;
+
+                        case 3:
+                            h.className = 'purple'
+                            break;
+                        
+                        default:
+                            break;
+                }
+            }
+        </script>
+    </head>
+
+    <body> <!--content in the page-->
+        <h1 id="changeMe">Get User Input</h1> <!--one h1 type per page-->
+    </body>
+
+    <form>
+        <fieldset>
+            <legend>Pick a number between 0 and 3</legend>
+            <label for="num">0-3</label>
+            <input 
+            type="number" 
+            name="num" 
+            id="num" 
+            min="0" 
+            max="3" 
+            step="1" 
+            placeholder="1"
+            />
+            <button type="button" id="changeBtn" class="btnClass">
+                Click to change color
+            </button>
+        </fieldset>
+    </form>
+
+</html>
