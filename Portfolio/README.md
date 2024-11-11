@@ -23,4 +23,7 @@ Intro page!
 All the pages will have the same format and style, but with their own touch and descriptions, backgrounds, doodles, and etc. (if time is on my side..) 
 
 --- 
-Did not focus on JavaScrit, for now, as I wanted to completely understand the foundations of HTML/CSS + and I'd love to use React on my portfolio, too :3
+Did not focus on JavaScript, for now, as I wanted to completely understand the foundations of HTML/CSS + and I'd love to use REACT on my portfolio, too :3
+
+----
+For the Week 10 HW, I somewhat fixed the NavBar functionality. It's yet to be perfect, but it's better

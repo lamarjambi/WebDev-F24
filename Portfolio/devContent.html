@@ -83,35 +83,41 @@
               verticalContainer.classList.toggle('active');
             });
           
-            // Draggable functionality
-            let isDragging = false;
-            let startX, startY, offsetX = 0, offsetY = 0;
-          
-            // Mouse down event to start dragging
-            verticalContainer.addEventListener('mousedown', (e) => {
-              isDragging = true;
-              startX = e.clientX - offsetX;
-              startY = e.clientY - offsetY;
-              verticalContainer.style.transition = "none"; // Disable transition while dragging
-            });
-          
-            // Mouse move event to update the container's position
-            document.addEventListener('mousemove', (e) => {
-              if (isDragging) {
-                offsetX = e.clientX - startX;
-                offsetY = e.clientY - startY;
-          
-                // Update the container's position
-                verticalContainer.style.left = `${offsetX}px`;
-                verticalContainer.style.top = `${offsetY}px`;
+            // HW - implementing JS DOM; dragging functionality (fixing)
+            const dragElem = document.getElementById('drag');
+
+            function startDragging(dragElem) {
+              let offsetX = 0, offsetY = 0;
+
+              // when the mouse is held, drag
+              dragElem.onmousedown = function(e) {
+                e.preventDefault(); 
+
+                // getBoundingClientRect() returns the location of an element
+                offsetX = e.clientX - dragElem.getBoundingClientRect().left; // left gives X position
+                offsetY = e.clientY - dragElem.getBoundingClientRect().top; // top gives Y position
+
+                document.onmousemove = onDrag;
+                document.onmouseup = stopDragging;
+              };
+
+              function onDrag(e) {
+                e.preventDefault();
+
+                // updating user (client) cursor location
+                dragElem.style.left = (e.clientX - offsetX) + 'px';
+                dragElem.style.top = (e.clientY - offsetY) + 'px';
               }
-            });
-          
-            // Mouse up event to stop dragging
-            document.addEventListener('mouseup', () => {
-              isDragging = false;
-              verticalContainer.style.transition = "0.4s ease"; // Restore transition
-            });
+
+              function stopDragging() {
+                // null = empty pointer, so basically when called it stops returning anything
+                document.onmousemove = null;
+                document.onmouseup = null;
+              }
+            }
+
+            startDragging(dragElem);
+
           </script>
           
           <!-- hi people :3 -->
