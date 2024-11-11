@@ -29,7 +29,7 @@
           <div class="spacer"></div> 
 
           <!-- NAVBARR -->
-          <div class="vertical-container">
+          <div class="vertical-container" id="drag">
             <a href="" class="toggle-box">
               <span class="icon"></span>
             </a>
@@ -87,30 +87,41 @@
             });
 
 
-            let isDragging = false;
-            let startX, startY, offsetX = 0, offsetY = 0;
+            // HW - implementing JS DOM; dragging functionality (fixing)
+            const dragElem = document.getElementById('drag');
 
-            verticalContainer.addEventListener('mousedown', (e) => {
-              isDragging = true;
-              startX = e.clientX - offsetX;
-              startY = e.clientY - offsetY;
-              verticalContainer.style.transition = "none"; 
-            });
-          
-            document.addEventListener('mousemove', (e) => {
-              if (isDragging) {
-                offsetX = e.clientX - startX;
-                offsetY = e.clientY - startY;
+            function startDragging(dragElem) {
+              let offsetX = 0, offsetY = 0;
 
-                verticalContainer.style.left = `${offsetX}px`;
-                verticalContainer.style.top = `${offsetY}px`;
+              // when the mouse is held, drag
+              dragElem.onmousedown = function(e) {
+                e.preventDefault(); 
+
+                // getBoundingClientRect() returns the location of an element
+                offsetX = e.clientX - dragElem.getBoundingClientRect().left; // left gives X position
+                offsetY = e.clientY - dragElem.getBoundingClientRect().top; // top gives Y position
+
+                document.onmousemove = onDrag;
+                document.onmouseup = stopDragging;
+              };
+
+              function onDrag(e) {
+                e.preventDefault();
+
+                // updating user (client) cursor location
+                dragElem.style.left = (e.clientX - offsetX) + 'px';
+                dragElem.style.top = (e.clientY - offsetY) + 'px';
               }
-            });
 
-            document.addEventListener('mouseup', () => {
-              isDragging = false;
-              verticalContainer.style.transition = "0.4s ease"; 
-            });
+              function stopDragging() {
+                // null = empty pointer, so basically when called it stops returning anything
+                document.onmousemove = null;
+                document.onmouseup = null;
+              }
+            }
+
+            startDragging(dragElem);
+
           </script>
           <!-- END OF NAVBAR ANIMATION -->
            

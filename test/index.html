@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Draggable Object</title>
+<style>
+  #draggable {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    position: absolute;
+    cursor: grab;
+  }
+</style>
+</head>
+<body>
+
+<div id="draggable">Drag me!</div>
+
+<script>
+  const draggable = document.getElementById("draggable");
+
+  let offsetX = 0;
+  let offsetY = 0;
+  let isDragging = false;
+
+  draggable.addEventListener("mousedown", (e) => {
+    offsetX = e.clientX - draggable.offsetLeft;
+    offsetY = e.clientY - draggable.offsetTop;
+    isDragging = true;
+    draggable.style.cursor = "grabbing";
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (isDragging) {
+      draggable.style.left = `${e.clientX - offsetX}px`;
+      draggable.style.top = `${e.clientY - offsetY}px`;
+    }
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+    draggable.style.cursor = "grab";
+  });
+</script>
+
+</body>
+</html>

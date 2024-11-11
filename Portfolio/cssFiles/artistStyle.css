@@ -50,19 +50,17 @@ give my own spin */
   /* cursor: grab;  */
 }
 
-/* #draggble {
+#drag {
   cursor: move;
-} */
+  /* z-index: 10; */
+  position: fixed;
+}
 
 .vertical-container.active {
   height: 355px;
   background-color: #faf0dd;
-  cursor: grabbing;
+  /* cursor: grabbing; */
 }
-
-/* .vertical-container.active {
-  height: 420px;
-} */
 
 .nav-items {
   position: absolute;
