@@ -1,0 +1,56 @@
+<!DOCTYPE html> <!--html type-->
+<html> 
+
+    <head> <!--content about the page-->
+        <meta charset="utf-8"> <!--alpahbet and fonts type shit-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--responsive behaivor-->
+        <title>Local Storage</title>
+    </head>
+
+    <body> <!--content in the page-->
+        <h1>Hello <span id="user">World!</span></h1> <!--one h1 type per page-->
+
+        <form id="userInfo">
+            <label for="firstName">What's your name?</label>
+            <input type="text" name="firstName" id="firstName" required />
+            <button type="submit" id="nameBtn">Submit!</button>
+        </form>
+
+        <button id="clearBtn">Clear current user</button>
+
+        <script>
+            const saveUser = () => {
+                const name = document.getElementById('firstName').value
+                console.log(name)
+
+                localStorage.firstName = name
+                localStorage.bagOfSpiders = true
+            }
+
+            const clearLocalStorage = () => {
+                localStorage.clear()
+
+                window.location.reload()
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('nameBtn').addEventListener('click', (e) => {
+                    // e.preventDefault()
+                    saveUser()
+                })
+
+                // check if name exists
+                if (localStorage.firstName) {
+                    document.getElementById('user').innerHTML = localStorage.firstName
+                }
+
+                const btnClear = document.getElementById('clearBtn')
+                btnClear.addEventListener('click', clearLocalStorage)
+            })
+
+        </script>
+    </body>
+
+
+
+</html>

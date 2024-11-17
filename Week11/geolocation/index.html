@@ -1,0 +1,56 @@
+<!DOCTYPE html> <!--html type-->
+<html> 
+
+    <head> <!--content about the page-->
+        <meta charset="utf-8"> <!--alpahbet and fonts type shit-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--responsive behaivor-->
+        <title>Geolocation</title>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                loc = document.getElementById('location')
+                getLocation()
+            })
+
+            const getLocation = () => {
+                if (navigator.geolocation && navigator.geolocation.getCurrentPosition) {
+                    navigator.geolocation.getCurrentPosition(setPosition, showError)
+                } else {
+                    alert('Your browser does not support geolocation')
+                }
+            }
+
+            const setPosition = (position) => {
+                console.log(position.coords.latitude)
+                console.log(position.coords.longitude)
+
+                const lat = position.coords.latitude
+                const lon = position.coords.longitude
+
+                loc.innerHTML = `<p>Latitude: ${lat}, longitude: ${lon}`
+            }
+
+            const showError = (error) => {
+                console.log(error) 
+                switch(error.code) {
+                    case error.PERSMISSION_DENIED:
+                        loc.innerHTML = `User denied request`
+                        break
+                    
+                    case error.POSITION_UNAVAILABLE:
+                        break
+
+                    case error.TIMEOUT:error
+                    loc 
+                }
+            }
+        </script>
+    </head>
+
+    <body> <!--content in the page-->
+        <div id="location">
+            <p>Currently searching for location</p>
+        </div>
+    </body>
+
+</html>
