@@ -1,49 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Draggable Object</title>
-<style>
-  #draggable {
-    width: 100px;
-    height: 100px;
-    background-color: lightblue;
-    position: absolute;
-    cursor: grab;
-  }
-</style>
+    <style>
+        .drawing-container {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #drawingBoard {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            cursor: crosshair;
+            background: white;
+            touch-action: none;
+        }
+
+        .controls {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            background: #4a90e2;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #357abd;
+        }
+
+        #sendingOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
+    <div class="drawing-container">
+        <div class="controls">
+            <input type="color" id="colorPicker" value="#000000">
+            <input type="range" id="brushSize" min="1" max="20" value="5">
+            <button id="clearBtn">Clear</button>
+            <button id="saveBtn">Send Drawing</button>
+        </div>
+        <canvas id="drawingBoard" width="600" height="400"></canvas>
+    </div>
 
-<div id="draggable">Drag me!</div>
+    <div id="sendingOverlay">
+        Sending drawing...
+    </div>
 
-<script>
-  const draggable = document.getElementById("draggable");
+    <script>
+      // my public key
+        emailjs.init("4ZMyGUw8l-lWYOOfh");
 
-  let offsetX = 0;
-  let offsetY = 0;
-  let isDragging = false;
+        const canvas = document.getElementById('drawingBoard');
+        const ctx = canvas.getContext('2d');
+        const colorPicker = document.getElementById('colorPicker');
+        const brushSize = document.getElementById('brushSize');
+        const clearBtn = document.getElementById('clearBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const sendingOverlay = document.getElementById('sendingOverlay');
 
-  draggable.addEventListener("mousedown", (e) => {
-    offsetX = e.clientX - draggable.offsetLeft;
-    offsetY = e.clientY - draggable.offsetTop;
-    isDragging = true;
-    draggable.style.cursor = "grabbing";
-  });
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
 
-  document.addEventListener("mousemove", (e) => {
-    if (isDragging) {
-      draggable.style.left = `${e.clientX - offsetX}px`;
-      draggable.style.top = `${e.clientY - offsetY}px`;
-    }
-  });
+        // canvas with white background
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  document.addEventListener("mouseup", () => {
-    isDragging = false;
-    draggable.style.cursor = "grab";
-  });
-</script>
+        // initial drawing style
+        ctx.strokeStyle = colorPicker.value;
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = brushSize.value;
 
+        function getMousePos(canvas, e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            return {
+                x: (e.clientX - rect.left) * scaleX,
+                y: (e.clientY - rect.top) * scaleY
+            };
+        }
+
+        function getTouchPos(canvas, e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            return {
+                x: (e.touches[0].clientX - rect.left) * scaleX,
+                y: (e.touches[0].clientY - rect.top) * scaleY
+            };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const pos = e.type.includes('mouse') ? getMousePos(canvas, e) : getTouchPos(canvas, e);
+            lastX = pos.x;
+            lastY = pos.y;
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+
+            const pos = e.type.includes('mouse') ? getMousePos(canvas, e) : getTouchPos(canvas, e);
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+
+            lastX = pos.x;
+            lastY = pos.y;
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        // mopuse Events
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        // touch Events
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            startDrawing(e);
+        });
+        
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            draw(e);
+        });
+        
+        canvas.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            stopDrawing();
+        });
+
+        // control Events
+        colorPicker.addEventListener('input', (e) => {
+            ctx.strokeStyle = e.target.value;
+        });
+
+        brushSize.addEventListener('input', (e) => {
+            ctx.lineWidth = e.target.value;
+        });
+
+        clearBtn.addEventListener('click', () => {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = colorPicker.value;
+        });
+
+        saveBtn.addEventListener('click', async () => {
+            // check if canvas is empty
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            const isEmpty = !imageData.some(channel => channel !== 255);
+            
+            if (isEmpty) {
+                alert('Please draw something before sending!');
+                return;
+            }
+
+            sendingOverlay.style.display = 'flex';
+            const dataURL = canvas.toDataURL('image/png');
+            
+            try {
+                await emailjs.send(
+                    "service_sflmbin", // email service ID from EmailJS
+                    "template_fblc1xo", // email template ID from EmailJS
+                    {
+                        drawing: dataURL,
+                        timestamp: new Date().toLocaleString(),
+                    }
+                );
+                
+                alert('Drawing sent successfully!');
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.strokeStyle = colorPicker.value;
+            } catch (error) {
+                console.error('Error sending drawing:', error);
+                alert('Failed to send drawing. Please try again.');
+            } finally {
+                sendingOverlay.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
