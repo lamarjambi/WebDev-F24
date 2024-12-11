@@ -14,6 +14,12 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dokdo&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <!-- EmailJS thingies -->
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <!-- GSAP -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+        <!-- favicon :P -->
         <link rel="icon" type="image/x-icon" href="img/TransJambo-Logo-16px.png">
     </head>
 
@@ -77,51 +83,23 @@
           
           <!-- NAVBAR ANIMATIONSS -->
           <script>
+            gsap.registerPlugin(Draggable);
+
+            // Toggle functionality 
             const toggleClick = document.querySelector('.toggle-box');
             const verticalContainer = document.querySelector('.vertical-container');
-            
+
             toggleClick.addEventListener('click', (e) => {
               e.preventDefault(); 
               toggleClick.classList.toggle('active');
               verticalContainer.classList.toggle('active');
             });
 
-
-            // HW - implementing JS DOM; dragging functionality (fixing)
-            const dragElem = document.getElementById('drag');
-
-            function startDragging(dragElem) {
-              let offsetX = 0, offsetY = 0;
-
-              // when the mouse is held, drag
-              dragElem.onmousedown = function(e) {
-                e.preventDefault(); 
-
-                // getBoundingClientRect() returns the location of an element
-                offsetX = e.clientX - dragElem.getBoundingClientRect().left; // left gives X position
-                offsetY = e.clientY - dragElem.getBoundingClientRect().top; // top gives Y position
-
-                document.onmousemove = onDrag;
-                document.onmouseup = stopDragging;
-              };
-
-              function onDrag(e) {
-                e.preventDefault();
-
-                // updating user (client) cursor location
-                dragElem.style.left = (e.clientX - offsetX) + 'px';
-                dragElem.style.top = (e.clientY - offsetY) + 'px';
-              }
-
-              function stopDragging() {
-                // null = empty pointer, so basically when called it stops returning anything
-                document.onmousemove = null;
-                document.onmouseup = null;
-              }
-            }
-
-            startDragging(dragElem);
-
+            // GSAP draggable
+            Draggable.create(".vertical-container", {
+              bounds: window,
+              inertia: true
+            });
           </script>
           <!-- END OF NAVBAR ANIMATION -->
            
@@ -151,7 +129,6 @@
           <div class="spacer"></div>  -->
 
           <!-- THUMBS!!! -->
-
           <section class="project-section">
             <div class="tag">Illustrations</div>
             <h2 class="desc">Different digital art softwares</h2>
@@ -574,7 +551,201 @@
           <div class="spacer"></div> 
 
           <!-- draw 4 me! -->
+          <section class="drawing-section">
+            <div class="tag">Dr@w 4 me!</div>
+            <h2 class="desc">Leave your mark on my portfolio :]</h2>
+            
+            <div class="drawing-container">
+              <div class="controls">
+                <input type="color" id="colorPicker" value="#000000" class="color-input">
+                <input type="range" id="brushSize" min="1" max="20" value="5" class="brush-input">
+                <button id="clearBtn" class="control-btn">Clear</button>
+                <button id="saveBtn" class="control-btn">Send Drawing</button>
+              </div>
+              <canvas id="drawingBoard" width="600" height="400"></canvas>
+            </div>
 
+            <div id="sendingOverlay">
+              Sending drawing...
+            </div>
+          </section>
+
+          <script>
+            // public key
+            emailjs.init("4ZMyGUw8l-lWYOOfh");
+
+            const canvas = document.getElementById('drawingBoard');
+            const ctx = canvas.getContext('2d');
+            const colorPicker = document.getElementById('colorPicker');
+            const brushSize = document.getElementById('brushSize');
+            const clearBtn = document.getElementById('clearBtn');
+            const saveBtn = document.getElementById('saveBtn');
+            const sendingOverlay = document.getElementById('sendingOverlay');
+
+            let isDrawing = false;
+            let lastX = 0;
+            let lastY = 0;
+
+            // start with white background
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // start with a round line
+            ctx.strokeStyle = colorPicker.value;
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+            ctx.lineWidth = brushSize.value;
+
+            function getMousePos(canvas, e) {
+              const rect = canvas.getBoundingClientRect();
+              const scaleX = canvas.width / rect.width;
+              const scaleY = canvas.height / rect.height;
+              return {
+                x: (e.clientX - rect.left) * scaleX,
+                y: (e.clientY - rect.top) * scaleY
+              };
+            }
+
+            function getTouchPos(canvas, e) {
+              const rect = canvas.getBoundingClientRect();
+              const scaleX = canvas.width / rect.width;
+              const scaleY = canvas.height / rect.height;
+              return {
+                x: (e.touches[0].clientX - rect.left) * scaleX,
+                y: (e.touches[0].clientY - rect.top) * scaleY
+              };
+            }
+
+            function startDrawing(e) {
+              isDrawing = true;
+              const pos = e.type.includes('mouse') ? getMousePos(canvas, e) : getTouchPos(canvas, e);
+              lastX = pos.x;
+              lastY = pos.y;
+            }
+
+            function draw(e) {
+              if (!isDrawing) return;
+              e.preventDefault();
+
+              const pos = e.type.includes('mouse') ? getMousePos(canvas, e) : getTouchPos(canvas, e);
+
+              ctx.beginPath();
+              ctx.moveTo(lastX, lastY);
+              ctx.lineTo(pos.x, pos.y);
+              ctx.stroke();
+
+              lastX = pos.x;
+              lastY = pos.y;
+            }
+
+            function stopDrawing() {
+              isDrawing = false;
+            }
+
+            // mouse events and stuff
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+
+            // as long as the mouse is touching -> draw
+            canvas.addEventListener('touchstart', (e) => {
+              e.preventDefault();
+              startDrawing(e);
+            });
+            
+            canvas.addEventListener('touchmove', (e) => {
+              e.preventDefault();
+              draw(e);
+            });
+            
+            canvas.addEventListener('touchend', (e) => {
+              e.preventDefault();
+              stopDrawing();
+            });
+
+            // color and conrtol stuff
+            colorPicker.addEventListener('input', (e) => {
+              ctx.strokeStyle = e.target.value;
+            });
+
+            brushSize.addEventListener('input', (e) => {
+              ctx.lineWidth = e.target.value;
+            });
+
+            clearBtn.addEventListener('click', () => {
+              ctx.fillStyle = 'white';
+              ctx.fillRect(0, 0, canvas.width, canvas.height);
+              ctx.strokeStyle = colorPicker.value;
+            });
+
+            saveBtn.addEventListener('click', async () => {
+              // if canvas is empty -> send elrt
+              const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+              const isEmpty = !imageData.some(channel => channel !== 255);
+              
+              if (isEmpty) {
+                  alert('Please draw something before sending!');
+                  return;
+              }
+
+              sendingOverlay.style.display = 'flex';
+              
+              try {
+                  // compress image to simplify it in email
+                  const dataURL = canvas.toDataURL('image/jpeg', 0.5); // JPEG w/ 50% quality
+                  
+                  const maxChunkLength = 25000; // EmailJS has a limit on message size
+                  const chunks = [];
+                  let currentChunk = '';
+                  
+                  for (let i = 0; i < dataURL.length; i++) {
+                      currentChunk += dataURL[i];
+                      if (currentChunk.length >= maxChunkLength) {
+                          chunks.push(currentChunk);
+                          currentChunk = '';
+                      }
+                  }
+                  if (currentChunk) {
+                      chunks.push(currentChunk);
+                  }
+
+                  // service and template IDs from EmailJS
+                  await emailjs.send(
+                      "service_sflmbin",
+                      "template_fblc1xo",
+                      {
+                          drawing_info: `Drawing submission (Part 1/${chunks.length})`,
+                          timestamp: new Date().toLocaleString(),
+                          drawing: chunks[0],
+                          total_parts: chunks.length
+                      }
+                  );
+
+                  for (let i = 1; i < chunks.length; i++) {
+                      await emailjs.send(
+                          "service_sflmbin",
+                          "template_fblc1xo",
+                          {
+                              drawing_info: `Drawing submission (Part ${i + 1}/${chunks.length})`,
+                              drawing: chunks[i],
+                              timestamp: new Date().toLocaleString()
+                          }
+                      );
+                  }
+                  
+                  alert('Drawing sent successfully!');
+                  ctx.fillStyle = 'white';
+                  ctx.fillRect(0, 0, canvas.width, canvas.height);
+                  ctx.strokeStyle = colorPicker.value;
+              } catch (error) {
+                  console.error('Error sending drawing:', error);
+                  alert('Failed to send drawing. Please try again.');
+              } finally {
+                  sendingOverlay.style.display = 'none';
+              }
+          });
+          </script>
           <!-- end of draw 4 me! -->
 
           <!-- FOOTER -->
