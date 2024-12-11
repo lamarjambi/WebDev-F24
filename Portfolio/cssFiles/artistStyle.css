@@ -1,5 +1,5 @@
 /* Scripter: Jambo 
-DM 2193 - Midterm Project 1
+DM 2193
 anything commenetd is a failed attempt at something :P */
 
 @import url('https://fonts.googleapis.com/css2?family=Dokdo&display=swap');
@@ -239,11 +239,10 @@ ul.nav-items {
 }
 
 .lead-para {
-  color: #faf0dd;
+  color: #000000;
   font-family: 'Dokdo', sans-serif; 
   font-size: 26px; 
   line-height: 1.5; 
-  -webkit-text-stroke: 1px #000000; 
 }
 
 /* image */
@@ -289,10 +288,10 @@ ul.nav-items {
 
 .desc {
   font-family: "Dokdo";
-  color: #faf0dd;
-  font-size: 26px;
+  color: #000000;
+  font-weight: lighter;
+  font-size: 24px;
   margin-bottom: 40px;
-  -webkit-text-stroke: 0.4px #000000;
 }
 
 .grid {
@@ -392,7 +391,6 @@ ul.nav-items {
   opacity: 1; 
 }
 
-/* Update overlay text */
 .grid-item .overlay-text {
   position: absolute;
   bottom: 0.5rem;
@@ -410,6 +408,32 @@ ul.nav-items {
   border: 1px solid #ec6ba7;
 }
 
+.grid-item p {
+  display: block;
+  background: transparent;
+}
+
+.grid-item h3 {
+  display: block;
+  background: transparent;
+}
+
+/* for smaller grid thumbs */
+.grid-item.small .overlay-text {
+  font-size: 10px; /* Smaller font size */
+  padding: 4px; /* Less padding */
+  margin: 0 0.5rem; /* Smaller margins */
+  bottom: 0.25rem; /* Closer to bottom */
+}
+
+.grid-item.medium .overlay-text,
+.grid-item.large .overlay-text,
+.grid-item.tall .overlay-text,
+.grid-item.wide .overlay-text,
+.grid-item.double-horizontal .overlay-text {
+  font-size: 14px;
+}
+
 .grid-item img:hover {
   opacity: 60%;
 }
@@ -425,7 +449,7 @@ ul.nav-items {
   pointer-events: auto; /* Enable pointer events */
 }
 
-/* Front face styling */
+/* front face styling */
 .card-front {
   position: absolute;
   width: 100%;
@@ -459,6 +483,16 @@ ul.nav-items {
   color: #000;
 }
 
+.card-back h3 {
+  line-height: 1.6; 
+}
+
+.card-back p {
+  font-family: "Dokdo";
+  font-size: 20px;
+  line-height: 1.2; 
+}
+
 /* Move image to front face */
 .card-front img {
   position: absolute;
@@ -470,11 +504,19 @@ ul.nav-items {
 }
 
 /* links */
+.project-links {
+  gap: 1.5rem;
+}
+
 .project-links a {
   color: #ec6ba7;
   text-decoration: none;
   cursor: pointer;
   pointer-events: auto;
+}
+
+.project-links a:hover {
+  color: #547dfd;
 }
 
 .grid-item.medium {
