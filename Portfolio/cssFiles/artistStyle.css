@@ -370,7 +370,7 @@ ul.nav-items {
   pointer-events: none;
 }
 
-/* hover effects */
+/* hover effects for cards */
 /* .grid-item:hover {
   transform: translateY(-5px);
 }  */
@@ -431,10 +431,10 @@ ul.nav-items {
 
 /* for smaller grid thumbs */
 .grid-item.small .overlay-text {
-  font-size: 10px; /* Smaller font size */
-  padding: 4px; /* Less padding */
-  margin: 0 0.5rem; /* Smaller margins */
-  bottom: 0.25rem; /* Closer to bottom */
+  font-size: 10px; 
+  padding: 4px; 
+  margin: 0 0.5rem; 
+  bottom: 0.25rem; 
 }
 
 .grid-item.medium .overlay-text,
@@ -457,7 +457,7 @@ ul.nav-items {
   backface-visibility: hidden;
   border-radius: 10px;
   background: #c9a0df;
-  pointer-events: auto; /* Enable pointer events */
+  pointer-events: auto; 
 }
 
 /* front face styling */
@@ -481,7 +481,6 @@ ul.nav-items {
   transform: rotate(180deg);
 }
 
-/* Back face styling */
 .card-back {
   background: #faf0dd;
   transform: rotateY(180deg);
@@ -504,7 +503,6 @@ ul.nav-items {
   line-height: 1.2; 
 }
 
-/* Move image to front face */
 .card-front img {
   position: absolute;
   width: 100%;
@@ -673,7 +671,7 @@ ul.nav-items {
     padding: 0;
     list-style: none;
     pointer-events: all;
-    display: flex; /* added */
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -786,6 +784,8 @@ ul.nav-items {
     object-fit: cover;
     overflow: hidden;
   }
+
+  
   /* ============= END OF PROJECTS (GRID) ============= */
 
   /* ============= SKILLS ============= */
@@ -811,7 +811,6 @@ ul.nav-items {
 }
 
 /* ============= DRAWING CANVAS ============= */
-/* Drawing Section Styles */
 .drawing-section {
   width: 65%;
   margin: 2rem auto;
@@ -860,7 +859,6 @@ ul.nav-items {
   background: #000;
 }
 
-/* Remove default color picker UI */
 .color-input::-webkit-color-swatch-wrapper {
   padding: 0;
 }
@@ -915,7 +913,6 @@ ul.nav-items {
   z-index: 1000;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
   .drawing-section {
     width: 90%;

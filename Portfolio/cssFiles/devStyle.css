@@ -315,9 +315,9 @@ ul.nav-items {
   position: absolute;
   left: -120px;
   top: 0;
-  font-family: 'Dokdo', sans-serif;
+  font-family: 'Press Start 2P', sans-serif;
   color: #ec6ba7; 
-  font-size: 24px;
+  font-size: 12px;
 }
 
 .role-details h3 {
@@ -392,7 +392,7 @@ ul.nav-items {
 }
 /* ============= END OF EXPERIENCE SECTION ============= */
 
-/* ============= PROJECTS (GRID) ============= */
+/* ============= PROJECTS (ROW) ============= */
 .project-section {
   width: 65%;
   margin: 0 auto;
@@ -539,7 +539,6 @@ ul.nav-items {
   font-family: "Press Start 2P", system-ui;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
   .project-section {
     width: 90%;
@@ -555,7 +554,7 @@ ul.nav-items {
     font-size: 1.2rem;
   }
 }
-/* ============= END OF PROJECTS (GRID) ============= */
+/* ============= END OF PROJECTS (ROW) ============= */
 
 /* ============= SKILLS ============= */
 .skills-section {
