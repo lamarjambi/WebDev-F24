@@ -311,7 +311,7 @@ ul.nav-items {
   align-items: center;
   font-size: 15px;
   position: relative; 
-  overflow: hidden; /* Changed to visible to show decorations */
+  overflow: hidden; 
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.4s, box-shadow 0.3s;
@@ -580,7 +580,6 @@ ul.nav-items {
     gap: 2rem;  
   }
   /* ============= END OF HEADER + INTRO TEXTBOX ============= */
-
   /* ============= PROJECTS (GRID) ============= */
   .grid {
     display: flex;
