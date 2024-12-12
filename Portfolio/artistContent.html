@@ -5,7 +5,7 @@
     <head> <!--content about the page-->
         <meta charset="utf-8"> <!--alpahbet and fonts type shit-->
         <meta name="viewport" content="width=device-width, initial-scale=1"> <!--responsive behaivor-->
-        <title>Jambo Artistic Habitat</title>
+        <title>J@mbo Artistic Habitat</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -83,23 +83,67 @@
           
           <!-- NAVBAR ANIMATIONSS -->
           <script>
-            gsap.registerPlugin(Draggable);
+            // gsap.registerPlugin(Draggable);
 
-            // Toggle functionality 
+            // // Toggle functionality 
+            // const toggleClick = document.querySelector('.toggle-box');
+            // const verticalContainer = document.querySelector('.vertical-container');
+
+            // toggleClick.addEventListener('click', (e) => {
+            //   e.preventDefault(); 
+            //   toggleClick.classList.toggle('active');
+            //   verticalContainer.classList.toggle('active');
+            // });
+
+            // // GSAP draggable
+            // Draggable.create(".vertical-container", {
+            //   bounds: window,
+            //   inertia: true
+            // });
+
             const toggleClick = document.querySelector('.toggle-box');
             const verticalContainer = document.querySelector('.vertical-container');
-
+            
             toggleClick.addEventListener('click', (e) => {
-              e.preventDefault(); 
+              e.preventDefault(); // Prevent the link from navigating
               toggleClick.classList.toggle('active');
               verticalContainer.classList.toggle('active');
             });
+          
+            // HW - implementing JS DOM; dragging functionality (fixing)
+            const dragElem = document.getElementById('drag');
 
-            // GSAP draggable
-            Draggable.create(".vertical-container", {
-              bounds: window,
-              inertia: true
-            });
+            function startDragging(dragElem) {
+              let offsetX = 0, offsetY = 0;
+
+              // when the mouse is held, drag
+              dragElem.onmousedown = function(e) {
+                e.preventDefault(); 
+
+                // getBoundingClientRect() returns the location of an element
+                offsetX = e.clientX - dragElem.getBoundingClientRect().left; // left gives X position
+                offsetY = e.clientY - dragElem.getBoundingClientRect().top; // top gives Y position
+
+                document.onmousemove = onDrag;
+                document.onmouseup = stopDragging;
+              };
+
+              function onDrag(e) {
+                e.preventDefault();
+
+                // updating user (client) cursor location
+                dragElem.style.left = (e.clientX - offsetX) + 'px';
+                dragElem.style.top = (e.clientY - offsetY) + 'px';
+              }
+
+              function stopDragging() {
+                // null = empty pointer, so basically when called it stops returning anything
+                document.onmousemove = null;
+                document.onmouseup = null;
+              }
+            }
+
+            startDragging(dragElem);
           </script>
           <!-- END OF NAVBAR ANIMATION -->
            
@@ -111,7 +155,7 @@
               <p class="lead-para">
                 This is J@mbo (Lamar Jambi) :P. I'm an Integarted Design and Media, Computer Science, 
                 and Game Design student at New York University. Currently Based in Brooklyn, NY! Interested
-                in digital art, game development, and front-end coding with UI/UX.
+                in digital art, game development, and comnputer visison in entertainment :]
                 <!-- ligula velit mollis dui, et elementum enim orci vel erat. Nam luctus laoreet tellus quis tempus. 
                 Nam faucibus, augue placerat sagittis aliquam, felis turpis condimentum elit.
                 Aliquam ac suscipit ligula.  -->
@@ -521,6 +565,8 @@
                   <span class="skill-item">Figma (UI/UX)</span>
                   <span class="skill-item">Java</span>
                   <span class="skill-item">JavaScript</span>
+                  <span class="skill-item">Processing</span>
+                  <span class="skill-item">P5.js</span>
                 </div>
               </div>
 

@@ -5,7 +5,7 @@
     <head> <!--content about the page-->
         <meta charset="utf-8"> <!--alpahbet and fonts type shit-->
         <meta name="viewport" content="width=device-width, initial-scale=1"> <!--responsive behaivor-->
-        <title>Jambo Developer Habitat</title>
+        <title>J@mbo Developer Habitat</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -73,12 +73,13 @@
           </div>
           <!-- END OF NAVBAR -->
 
+          <!-- NAVBAR ANIMATIONS -->
           <script>
             const toggleClick = document.querySelector('.toggle-box');
             const verticalContainer = document.querySelector('.vertical-container');
             
             toggleClick.addEventListener('click', (e) => {
-              e.preventDefault(); // Prevent the link from navigating
+              e.preventDefault(); 
               toggleClick.classList.toggle('active');
               verticalContainer.classList.toggle('active');
             });
@@ -117,18 +118,18 @@
             }
 
             startDragging(dragElem);
-
           </script>
-          
+          <!-- END OF NAVBAR ANIMATIONS -->
+
           <!-- hi people :3 -->
           <section class="about">
 
             <div class="about-text">
               <h3 class="heading">Welcome aboard >:3</h3>
               <p class="lead-para">
-                This is Jambo (Lamar Jambi) :P. I'm an Integarted Design and Media, Computer Science, 
+                This is J@mbo (Lamar Jambi) :P. I'm an Integarted Design and Media, Computer Science, 
                 and Game Design student at New York University. Currently Based in Brooklyn, NY! Interested
-                in digital art, game development and, front-end coding with UI/UX.
+                in digital art, game development, and comnputer visison in entertainment :]
                 <!-- ligula velit mollis dui, et elementum enim orci vel erat. Nam luctus laoreet tellus quis tempus. 
                 Nam faucibus, augue placerat sagittis aliquam, felis turpis condimentum elit.
                 Aliquam ac suscipit ligula.  -->
@@ -136,79 +137,166 @@
             </div>
 
             <div>
-              <img src="img/Image-holder.webp" alt="Illustration of Lamar" class="introImg">
+              <img src="img/self.jpg" alt="Picture of happy Lamar" class="introImg">
             </div>
 
           </section>
           <!-- end of hi poeple :3 -->
 
-          <!-- empty div to create a gap -->
-          <div class="spacer"></div> 
+          <!-- EXPIERIENCE SECTION -->
+          <section class="experience-section">
+            <div class="tag">Experience</div>
+            <h2 class="desc">I've been involved with..</h2>
+            
+            <div class="experience-timeline">
 
+              <div class="experience-item">
+                <div class="company">AR/VR</div>
+                <div class="role-details">
+                  <h3>Research Intern @ <a href="https://engineering.nyu.edu/vip-team/defining-accessibility-within-xr-gy" target="_blank" class="company-link">Defining Access. Within XR</a></h3>
+                  <div class="duration">Dec. 2024 - Present</div>
+                  <ul class="achievements">
+                    <li>
+                      <div class="achievement-content">
+                        Conducting research on accessibility challenges in 
+                        <span class="tech-tag">AR/VR technologies</span>, using Oculus Quest 2 and Snap Spectacles
+                      </div>
+                    </li>
+                    <li>
+                      <div class="achievement-content">
+                        Collaborating in a multidisciplinary team to design, prototype, and evaluate inclusive 
+                        reality experiences
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="experience-item">
+                <div class="company">GIL</div>
+                <div class="role-details">
+                  <h3>Research Intern @ <a href="https://game.engineering.nyu.edu/" target="_blank" class="company-link">Game Innovation Lab</a></h3>
+                  <div class="duration">Nov. 2024 - Present</div>
+                  <ul class="achievements">
+                    <li>
+                      <div class="achievement-content">
+                        Optimized AI agent solvers for puzzle games by implementing 
+                        <span class="tech-tag">A* Search Algorithm</span> and analyzing outcomes
+                      </div>
+                    </li>
+                    <li>
+                      <div class="achievement-content">
+                        Reimplementing game engines <span class="tech-tag">e.g. PuzzleScript</span> in 
+                        different programming languages to analyze performance metrics
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="experience-item">
+                <div class="company">Robotics</div>
+                <div class="role-details">
+                  <h3>Software Engineer @ <a href="https://www.instagram.com/nyurobotics?igsh=bG1kMXc2ZnppaWN6" target="_blank" class="company-link">NYU Robotics Club</a></h3>
+                  <div class="duration">Sep. 2024 - Present</div>
+                  <ul class="achievements">
+                    <li>
+                      <div class="achievement-content">
+                        Developing an interactive website using 
+                        <span class="tech-tag">React</span> enabling online meetings and remote robot control
+                      </div>
+                    </li>
+                    <li>
+                      <div class="achievement-content">
+                        Enhancing the brand identity <span class="tech-tag">(color scheme, logo)</span> using Adobe Illustrator
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="experience-item">
+                <div class="company">UI/UX</div>
+                <div class="role-details">
+                  <h3>Front-End Developer @ <a href="https://www.instagram.com/nyu_uxclub?igsh=bWl0NDk4cGFsM2xr" target="_blank" class="company-link">NYU UX Club</a></h3>
+                  <div class="duration">Sep. 2024 - Present</div>
+                  <ul class="achievements">
+                    <li>
+                      <div class="achievement-content">
+                        Researching and designing user-centered solutions by creating 5+ interactive prototypes using
+                        <span class="tech-tag">Figma</span> 
+                      </div>
+                    </li>
+                    <li>
+                      <div class="achievement-content">
+                        Collaborating on design iterations to improve usability and user experience in various digital projects
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </section>
+          <!-- END OF EXPERIECNE SECTION -->
+          
           <!-- THUMBS!!! -->
           <section class="project-section">
             <div class="tag">Projects</div>
-            <h2 class="desc">Different programming languages</h2>
-            <div class="container">
+            <h2 class="desc">I've been making...</h2>
+            
+            <div class="projects-container">
 
-              <div class="grid">
-                
-                <div class="grid-item medium">
-                  <img src="img/fantasy café .png">
-                  <span class="overlay-text">Fantasy Café</span>
+              <a href="https://github.com/smearle/ScriptDoctor.git" target="_blank" rel="noopener noreferrer" class="project-link">
+                <div class="project-card">
+                  <div class="project-image">
+                    <img src="img/script-doctor.png" alt="Project Image" loading="lazy">
+                  </div>
+                  <div class="project-content">
+                    <div class="project-header">
+                      <h3>Script Doctor A* AI Solver Agent</h3>
+                      <span class="project-status">Completed</span>
+                    </div>
+                    <p class="project-description">
+                      Implementing an AI PuzzleScript solver using A* Search Algorithm<br>
+                      This project includes creating AI chatbox prompts
+                    </p>
+                    <div class="project-tags">
+                      <span class="tech-tag">JavaScript</span>
+                      <span class="tech-tag">GPT-4</span>
+                      <span class="tech-tag">Python</span>
+                      <span class="tech-tag">A*</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="grid-item large">
-                  <img src="img/lil-dancy-dance.png">
-                  <span class="overlay-text">Lil Dancey-Dance</span>
+              </a>
+
+              <a href="https://dev.hsrn.nyu.edu/vip/corelink_general_app/data_center_robot" target="_blank" rel="noopener noreferrer" class="project-link">
+                <div class="project-card">
+                  <div class="project-image">
+                    <img src="img/hsrn.png" alt="Project Image" loading="lazy">
+                  </div>
+                  <div class="project-content">
+                    <div class="project-header">
+                      <h3>Online Meeting Platform</h3>
+                      <span class="project-status">In progress</span>
+                    </div>
+                    <p class="project-description">
+                      Enhancing the app interface for the NYU IT X HSRN Data Center Robot meeting platform<br>
+                      This project includes building in real-time chatboxes and remote controling functionality
+                    </p>
+                    <div class="project-tags">
+                      <span class="tech-tag">React</span>
+                      <span class="tech-tag">JavaScript</span>
+                      <span class="tech-tag">Figma</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="grid-item medium">
-                  <img src="img/Banana.png">
-                  <span class="overlay-text">Banana :]</span>
-                </div>
-                <div class="grid-item small">
-                  <img src="img/bloop character board - colored.png">
-                  <span class="overlay-text">Bloop - Color</span>
-                </div>
-                <div class="grid-item small">
-                  <img src="img/bloop bone.png">
-                  <span class="overlay-text">Bloop - De@d</span>
-                </div>
-                <div class="grid-item tall">
-                  <img src="img/Banana inspired.png">
-                  <span class="overlay-text">Banana Inspired</span>
-                </div>
-                <div class="grid-item wide">
-                  <img src="img/desert landscape.png">
-                  <span class="overlay-text">Saudi Desert</span>
-                </div>
-                <div class="grid-item tall">
-                  <img src="img/X-Lakin with a gun.png">
-                  <span class="overlay-text">X-Lakin Intro</span>
-                </div>
-                <div class="grid-item small">
-                  <img src="img/frat demon boy.png">
-                  <span class="overlay-text">Frat Demon</span>
-                </div>
-                <div class="grid-item medium">
-                  <img src="img/trippy hell.JPG">
-                  <span class="overlay-text">Trippy Hell</span>
-                </div>
-                <div class="grid-item medium">
-                  <img src="img/girls girls girls.JPG">
-                  <span class="overlay-text">Girls, girls, and girl</span>
-                </div>
-                <div class="grid-item double-horizontal">
-                  <img src="img/albalad.png">
-                  <span class="overlay-text">Old Jeddah</span>
-                </div>
-                
-              </div>
+              </a>
+
             </div>
           </section>
           <!-- END OF THUMBS!!! -->
-          
-          <!-- empty div to create a gap -->
-          <div class="spacer"></div> 
 
           <!-- SKILLSSS -->
           <section class="skills-section">

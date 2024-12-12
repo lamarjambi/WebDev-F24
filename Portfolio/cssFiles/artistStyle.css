@@ -21,7 +21,7 @@ body {
   overflow-x: hidden;
   letter-spacing: 0;
   kerning: 0;
-  cursor: url('../img/cursor.png'), auto;
+  cursor: url('../img/sparkle-cursor.png'), auto;
 }
 
 img {
@@ -48,11 +48,12 @@ give my own spin */
   transition: 0.4s ease;
   z-index: 1000;
   overflow: hidden;
+  cursor: url('../img/sparkle-cursor.png'), auto;
   /* cursor: grab;  */
 }
 
 #drag {
-  cursor: move;
+  cursor: url('../img/sparkle-cursor.png');
   /* z-index: 10; */
   /* position: fixed; */
 }
@@ -78,6 +79,7 @@ give my own spin */
   align-items: center;
   gap: 35px; 
   background: #faf0dd;
+  cursor: url('../img/sparkle-cursor.png'), auto;
 }
 
 .nav-items li {
@@ -102,6 +104,7 @@ give my own spin */
   fill: currentColor; 
   width: 24px;
   height: 24px;
+  cursor: url('../img/sparkle-cursor.png'), auto;
 } 
 
 ul.nav-items {
@@ -131,10 +134,12 @@ ul.nav-items {
   background: #faf0dd;
   justify-content: center;
   align-items: center;
+  cursor: url('../img/sparkle-cursor.png'), auto;
 }
 
 .nav-items a:hover {
   color: #ec6ba7;
+  cursor: url('../img/sparkle-cursor.png'), auto;
 }
 
 .nav-items .social-icon {
@@ -147,6 +152,7 @@ ul.nav-items {
 }
 
 .vertical-container.active .nav-items {
+  cursor: url('../img/sparkle-cursor.png'), auto;
   opacity: 1;
   pointer-events: all;
 }
@@ -161,7 +167,7 @@ ul.nav-items {
   width: 100%;
   border-radius: 50px;
   background-color: #faf0dd;
-  cursor: pointer;
+  cursor: url('../img/sparkle-cursor.png');
 }
 
 /* horizontal line */
@@ -175,6 +181,7 @@ ul.nav-items {
   left: 35px;
   transform: translate(-50%, -50%);
   transition: 0.3s ease;
+  cursor: url('../img/sparkle-cursor.png'), auto;
 }
 
 /* vertical line */
@@ -189,15 +196,18 @@ ul.nav-items {
   left: 50%;
   transform: translate(-50%, -50%);
   transition: 0.3s ease;
+  cursor: url('../img/sparkle-cursor.png'), auto;
 }
 
 .toggle-box.active .icon {
   transform: translate(-50%, -50%) rotate(45deg);
+  cursor: url('../img/sparkle-cursor.png'), auto;
 }
 
 .toggle-box.active .icon::before {
   color: red;
   transform: translate(-50%, -50%) rotate(0deg); 
+  cursor: url('../img/sparkle-cursor.png'), auto;
 }
 
 .toggle-box:hover .icon,
@@ -289,7 +299,7 @@ ul.nav-items {
 
 .desc {
   font-family: "Dokdo";
-  color: #000000;
+  color: #faf0dd;
   font-weight: lighter;
   font-size: 24px;
   margin-bottom: 40px;
@@ -318,7 +328,7 @@ ul.nav-items {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.4s, box-shadow 0.3s;
   transform-style: preserve-3d;
-  cursor: url('../img/cursor.png'), auto;
+  cursor: url('../img/sparkle-cursor.png'), auto;
   border: 1px solid #000;
   background: transparent;
 }
@@ -326,9 +336,9 @@ ul.nav-items {
 /* card corner decorations */
 .grid-item::before,
 .grid-item::after {
-  content: '♠';
+  content: '♥';
   position: absolute;
-  font-size: 2rem;
+  font-size: 28px;
   color: #ec6ba7;
   z-index: 10;
   background-color: transparent;
@@ -512,7 +522,7 @@ ul.nav-items {
 .project-links a {
   color: #ec6ba7;
   text-decoration: none;
-  cursor: pointer;
+  cursor: url('../img/sparkle-cursor.png'), auto;
   pointer-events: auto;
 }
 
@@ -817,7 +827,7 @@ ul.nav-items {
 #drawingBoard {
   border: 2px solid #ec6ba7;
   border-radius: 10px;
-  cursor: url('../img/cursor.png'), auto;
+  cursor: url('../img/sparkle-cursor.png'), auto;
   background: white;
   touch-action: none;
   width: 100%;
@@ -872,7 +882,7 @@ ul.nav-items {
   height: 10px;
   border-radius: 5px;
   background: #ec6ba7;
-  cursor: url('../img/cursor.png'), auto;
+  cursor: url('../img/sparkle-cursor.png'), auto;
 }
 
 .control-btn {
@@ -881,7 +891,7 @@ ul.nav-items {
   border-radius: 5px;
   background: #ec6ba7;
   color: white;
-  cursor: url('../img/cursor.png'), auto;
+  cursor: url('../img/sparkle-cursor.png'), auto;
   font-family: "Press Start 2P", system-ui;
   font-size: 14px;
   transition: background-color 0.3s ease;
