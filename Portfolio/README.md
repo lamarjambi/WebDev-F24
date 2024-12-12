@@ -2,7 +2,7 @@ Walkthrough of Jambo's Habitat :]
 ---
 Intro page!
 
-*Pick your fighter; which side of me would you like to see? Artist, Developer, or Game Designer?*
+*Pick your fighter; which side of me would you like to see? Artist, Developer, or Game Designer?*\
 Each card symbol will match in the page as will!
 
 1. Artistic Habitat
