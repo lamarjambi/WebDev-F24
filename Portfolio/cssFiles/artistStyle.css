@@ -844,10 +844,9 @@ ul.nav-items {
   align-items: center;
   justify-content: center;
   gap: 15px;
-  border: 1px solid #ec6ba7;
+  border: 2px solid #ec6ba7;
 }
 
-/* Updated color input styles */
 .color-input {
   -webkit-appearance: none;
   -moz-appearance: none;
