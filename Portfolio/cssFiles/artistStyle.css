@@ -867,7 +867,7 @@ ul.nav-items {
 
   .grid-item {
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1/1; /*squares*/
     position: relative;
     transform-style: preserve-3d;
     margin-bottom: 20px;
