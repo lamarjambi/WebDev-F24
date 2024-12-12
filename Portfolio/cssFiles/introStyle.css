@@ -71,6 +71,39 @@ strong {
     border-radius: 5.5%;
     overflow: hidden; 
     transition: transform 0.3s ease, margin 0.3s ease;
+    position: relative;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(84, 125, 253, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-overlay p {
+    color: #000000;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 1em;
+    text-align: center;
+    padding: 10px;
+    background-color: transparent;
+}
+
+.card:hover .card-overlay {
+    opacity: 1;
+}
+
+.card:hover {
+    animation: float 1.5s ease-in-out infinite;
+    z-index: 1;
 }
 
 .card img {
