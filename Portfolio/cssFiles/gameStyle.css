@@ -359,6 +359,13 @@ ul.nav-items {
   cursor: url('../img/kirby-cursor.png'), auto;
 }
 
+.game-item video {
+  width: 100%;
+  height: auto;
+  max-width: 300px; /* Adjust this value to match your original GIF width */
+  display: block;
+}
+
 .overlay-text {
   color: #c9a0df;
 }
