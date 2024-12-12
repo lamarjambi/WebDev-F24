@@ -648,168 +648,6 @@ ul.nav-items {
 }
 /* ============= END OF FOOTER AND SVG CODES ============= */
 
-@media (max-width: 768px) {
-  /* ============= NAVBAR STUFF ============= */
-  .vertical-container {
-    position: fixed;
-    top: 15%;
-    left: 50%;
-    flex-direction: row;
-    transform: translateX(-50%); /* center */
-    display:flex;
-  }
-
-  .nav-items-top {
-    display: none;
-  }
-
-  .nav-items {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 90%;
-    padding: 0;
-    list-style: none;
-    pointer-events: all;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background: #faf0dd;
-    display: none; 
-    margin-right: 1em;
-  }
-
-  .nav-items svg {
-    width: 20px;
-    height: 20px;
-    color: #ec6ba7; 
-  }
-
-  .nav-items a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-  }
-
-  .vertical-container.active {
-    width: 375px;
-    height: 70px;
-  }
-
-  .vertical-container.active .nav-items {
-    opacity: 1;
-    pointer-events: all;
-    display: flex; 
-  }
-
-  .nav-items-bottom {
-    display: none; 
-  }
-
-  /* fixing mobile issue with not showing icons w/ z-index */
-  .toggle-box {
-    z-index: 1000; 
-    width: 20%;
-  }
-
-  /* ============= END OF NAVBAR STUFF ============= */
-
-  /* ============= HEADER + INTRO TEXTBOX ============= */
-  .about {
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  .about-text {
-    max-width: 100%;
-  }
-
-  .heading {
-    font-size: 2rem;
-  }
-
-  .about div:last-child {
-    justify-content: center;
-    margin-top: 20px;
-  }
-
-  .container {
-    width: 100%;
-    display: flex;
-    flex-direction: column; 
-    gap: 2rem;  
-  }
-  /* ============= END OF HEADER + INTRO TEXTBOX ============= */
-
-  /* ============= PROJECTS (GRID) ============= */
-  .grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 5%;
-  }
-
-  .project-section {
-    font-family: "Press Start 2P", system-ui;
-    width: 90%;
-    height: auto;
-    margin-bottom: 14150px;
-  }
-
-  .grid-item {
-    width: 100%;
-    height: auto; 
-    min-height: 600px; 
-    overflow: hidden;
-    height: 100vw; 
-    max-height: 100vw;
-  }
-
-  .grid-item.large,
-  .grid-item.wide,
-  .grid-item.tall,
-  .grid-item.double-horizontal {
-    flex-basis: 100%;
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-  }
-
-  .grid-item img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    overflow: hidden;
-  }
-
-  
-  /* ============= END OF PROJECTS (GRID) ============= */
-
-  /* ============= SKILLS ============= */
-  .skills-section {
-    width: 90%;
-  }
-
-  .skill-category {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .category-name {
-    margin-bottom: 10px;
-  }
-  /* ============= END OF SKILLS ============= */
-  
-  /* ============= FOOTER ============= */
-  .footer-content {
-    padding: 0 1rem;
-  }
-
-}
-
 /* ============= DRAWING CANVAS ============= */
 .drawing-section {
   width: 65%;
@@ -912,25 +750,227 @@ ul.nav-items {
   font-size: 20px;
   z-index: 1000;
 }
+/* ============= END OF DRAWING CANVAS ============= */
 
+/* ============= MEDIA QUERY FOR MOBILE ============= */
 @media (max-width: 768px) {
-  .drawing-section {
+  /* ============= NAVBAR STUFF ============= */
+  .vertical-container {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    flex-direction: row;
+    transform: translateX(-50%); /* center */
+    display:flex;
+  }
+
+  .nav-items-top {
+    display: none;
+  }
+
+  .nav-items {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 90%;
+    padding: 0;
+    list-style: none;
+    pointer-events: all;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: #faf0dd;
+    display: none; 
+    margin-right: 1em;
+  }
+
+  .nav-items svg {
+    width: 20px;
+    height: 20px;
+    color: #ec6ba7; 
+  }
+
+  .nav-items a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .vertical-container.active {
+    width: 375px;
+    height: 70px;
+  }
+
+  .vertical-container.active .nav-items {
+    opacity: 1;
+    pointer-events: all;
+    display: flex; 
+  }
+
+  .nav-items-bottom {
+    display: none; 
+  }
+
+  /* fixing mobile issue with not showing icons w/ z-index */
+  .toggle-box {
+    z-index: 1000; 
+    width: 20%;
+  }
+
+  /* ============= END OF NAVBAR STUFF ============= */
+
+  /* ============= HEADER + INTRO TEXTBOX ============= */
+  .about {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .about div:last-child {
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    gap: 2rem;  
+  }
+  /* ============= END OF HEADER + INTRO TEXTBOX ============= */
+
+  /* ============= PROJECTS (GRID) ============= */
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 5%;
+    height: auto;
+  }
+
+  .project-section {
+    font-family: "Press Start 2P", system-ui;
+    width: 90%;
+    height: auto;
+    margin-bottom: 14150px;
+    margin: auto;
+  }
+
+  .grid-item {
+    width: 100%;
+    aspect-ratio: 1/1;
+    position: relative;
+    transform-style: preserve-3d;
+    margin-bottom: 20px;
+  }
+
+  .grid-item.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+  .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+  }
+
+  .card-front {
+    transform: rotateY(0deg);
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: #faf0dd;
+  }
+
+  /* Ensure images cover their containers properly */
+  .grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* Ensure text is visible on card back */
+  .grid-item.flipped .card-back {
+    z-index: 1;
+    /* Override any transform that might be hiding it */
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+  }
+
+  /* Make text more visible */
+  .card-back h3,
+  .card-back p {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+  }
+  /* ============= END OF PROJECTS (GRID) ============= */
+
+  /* ============= SKILLS ============= */
+  .skills-section {
     width: 90%;
   }
 
-  .controls {
-    flex-wrap: wrap;
-    gap: 10px;
+  .skill-category {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 
-  .control-btn {
-    width: 100%;
-    margin: 5px 0;
+  .category-name {
+    margin-bottom: 10px;
+  }
+  /* ============= END OF SKILLS ============= */
+  
+  /* ============= FOOTER ============= */
+  .footer-content {
+    padding: 0 1rem;
   }
 
-  .brush-input {
-    width: 100%;
-    max-width: none;
+  /* ============= DRAWING CANVAS ============= */
+  @media (max-width: 768px) {
+    .drawing-section {
+      width: 90%;
+    }
+  
+    .controls {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .control-btn {
+      width: 100%;
+      margin: 5px 0;
+    }
+  
+    .brush-input {
+      width: 100%;
+      max-width: none;
+    }
   }
+  /* ============= END OF DRAWING CANVAS ============= */
 }
-/* ============= END OF DRAWING CANVAS ============= */
+/* ============= END OF MEDIA QUERY FOR MOBILE ============= */
