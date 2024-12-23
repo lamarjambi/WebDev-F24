@@ -31,13 +31,14 @@
           <div class="spacer"></div> 
 
           <!-- NAVBARR -->
-          <div class="vertical-container">
+          <div class="vertical-container" id="drag">
             <a href="" class="toggle-box">
               <span class="icon"></span>
             </a>
           
             <ul class="nav-items">
 
+              <!-- ask about absolute vs relative path ): -->
               <li>
                 <a href="files/Lamar Jambi Resume (Updated).pdf" target="_blank">
                   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 448 512">
@@ -75,13 +76,32 @@
             </ul>
           </div>
           <!-- END OF NAVBAR -->
-
+          
+          <!-- NAVBAR ANIMATIONSS -->
           <script>
+            // gsap.registerPlugin(Draggable);
+
+            // // Toggle functionality 
+            // const toggleClick = document.querySelector('.toggle-box');
+            // const verticalContainer = document.querySelector('.vertical-container');
+
+            // toggleClick.addEventListener('click', (e) => {
+            //   e.preventDefault(); 
+            //   toggleClick.classList.toggle('active');
+            //   verticalContainer.classList.toggle('active');
+            // });
+
+            // // GSAP draggable
+            // Draggable.create(".vertical-container", {
+            //   bounds: window,
+            //   inertia: true
+            // });
+
             const toggleClick = document.querySelector('.toggle-box');
             const verticalContainer = document.querySelector('.vertical-container');
             
             toggleClick.addEventListener('click', (e) => {
-              e.preventDefault(); 
+              e.preventDefault(); // Prevent the link from navigating
               toggleClick.classList.toggle('active');
               verticalContainer.classList.toggle('active');
             });
@@ -120,8 +140,8 @@
             }
 
             startDragging(dragElem);
-
           </script>
+          <!-- END OF NAVBAR ANIMATION -->
           
           <!-- hi people :3 -->
           <section class="about">

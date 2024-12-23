@@ -395,6 +395,10 @@ ul.nav-items {
 .game-item img:hover {
   opacity: 60%;
 }
+
+.game-item video:hover {
+  opacity: 60%;
+}
 /* ============= END OF PROJECTS ============= */
 
 /* ============= SKILLS ============= */

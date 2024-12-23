@@ -10,6 +10,7 @@ anything commenetd is a failed attempt at something :P */
   padding: 0;
   box-sizing: border-box;
   background-color: rgba(253, 210, 59, 1);
+  cursor: url('../img/sparkle-cursor.png'), auto;
 }
 
 html,
@@ -644,6 +645,7 @@ ul.nav-items {
 
 .social-icon:hover {
   color: #547dfd;
+  cursor: url('../img/sparkle-cursor.png'), auto;
 }
 
 .copyright {
@@ -701,7 +703,7 @@ ul.nav-items {
   padding: 0;
   border: 2px solid #000;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: url('../img/sparkle-cursor.png'), auto;
   background: #000;
 }
 
