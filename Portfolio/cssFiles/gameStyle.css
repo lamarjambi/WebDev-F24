@@ -770,7 +770,6 @@ ul.nav-items {
   cursor: not-allowed;
 }
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
   .snake-game-container {
     padding: 10px;
