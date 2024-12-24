@@ -841,6 +841,73 @@
           </footer>
           <!-- END OF FOOTER -->
 
+          <!-- SCROLLING LOADING ANIMATIONS -->
+          <script>
+            class ScrollAnimationHandler {
+              constructor(options = {}) {
+                this.options = {
+                  threshold: 0.2,
+                  root: null,
+                  rootMargin: "0px",
+                  ...options
+                };
+                
+                this.init();
+              }
+
+              init() {
+                this.observer = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        this.observer.unobserve(entry.target);
+                      }
+                    });
+                  },
+                  {
+                    threshold: this.options.threshold,
+                    root: this.options.root,
+                    rootMargin: this.options.rootMargin
+                  }
+                );
+
+                this.observeElements();
+              }
+
+              observeElements() {
+                const elements = document.querySelectorAll('.scroll-reveal');
+                elements.forEach(element => this.observer.observe(element));
+              }
+            }
+
+            // start animations when DOM is loaded
+            document.addEventListener('DOMContentLoaded', () => {
+              const elementsToAnimate = {
+                '.hero': 'reveal-sparkle',
+                '.about': 'reveal-float reveal-delay-1',
+                '.grid-item': 'reveal-twirl',
+                '.project-section': 'reveal-float',
+                '.skills-section': 'reveal-float reveal-delay-1',
+                '.drawing-section': 'reveal-sparkle reveal-delay-2',
+                '.skill-item': 'reveal-float',
+                '.footer': 'reveal-float reveal-delay-3'
+              };
+
+              Object.entries(elementsToAnimate).forEach(([selector, classes]) => {
+                document.querySelectorAll(selector).forEach(element => {
+                  element.classList.add('scroll-reveal', ...classes.split(' '));
+                });
+              });
+
+              new ScrollAnimationHandler({
+                threshold: 0.15,
+                rootMargin: "50px"
+              });
+            });
+          </script>
+          <!-- END OF SCROLLING LOADING ANIMATIONS -->
+
     </body>
 
 

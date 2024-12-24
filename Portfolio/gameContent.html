@@ -263,6 +263,178 @@
           <!-- empty div to create a gap -->
           <div class="spacer"></div> 
 
+          <!-- SNAKE GAME -->
+          <section class="project-section scroll-reveal reveal-float">
+            <div class="tag">Sn@ke Game</div>
+            <h2 class="desc">Lead our Sn@ke (pink :3) to his food using your magical Kirby mouse!</h2>
+
+            <div class="snake-game-container">
+                <canvas id="snakeCanvas"></canvas>
+                <div id="scoreDisplay" class="snake-score">Score: 0</div>
+                <div id="highScoreDisplay" class="snake-high-score">High Score: 0</div>
+                <button id="startButton" class="snake-start-button">Start Game</button>
+            </div>
+          </section>
+
+          <script>
+            const canvas = document.getElementById('snakeCanvas');
+            const ctx = canvas.getContext('2d');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const highScoreDisplay = document.getElementById('highScoreDisplay');
+            const startButton = document.getElementById('startButton');
+
+            canvas.width = 400;
+            canvas.height = 400;
+
+            const gridSize = 20;
+            const tileCount = canvas.width / gridSize;
+
+            let snake = [];
+            let food = {};
+            let direction = 'right';
+            let score = 0;
+            let highScore = 0;
+            let gameInterval;
+            let gameActive = false;
+            let mouseX = 0;
+            let mouseY = 0;
+
+            canvas.addEventListener('mousemove', (e) => {
+              const rect = canvas.getBoundingClientRect();
+              mouseX = e.clientX - rect.left;
+              mouseY = e.clientY - rect.top;
+            });
+
+            function initializeGame() {
+              snake = [
+                  { x: 5, y: 5 }
+              ];
+              direction = 'right';
+              score = 0;
+              scoreDisplay.textContent = `Score: ${score}`;
+              placeFood();
+            }
+
+            function placeFood() {
+              food = {
+                  x: Math.floor(Math.random() * tileCount),
+                  y: Math.floor(Math.random() * tileCount)
+              };
+              for (let part of snake) {
+                  if (part.x === food.x && part.y === food.y) {
+                      placeFood();
+                      break;
+                  }
+              }
+            }
+
+            function draw() {
+              ctx.fillStyle = '#faf0dd';
+              ctx.fillRect(0, 0, canvas.width, canvas.height);
+              
+              ctx.fillStyle = '#ec6ba7';
+              snake.forEach((part, index) => {
+                  if (index === 0) {
+                      ctx.fillStyle = '#d84f8b';
+                  }
+                  ctx.fillRect(part.x * gridSize, part.y * gridSize, gridSize - 2, gridSize - 2);
+              });
+              
+              ctx.fillStyle = '#547dfd';
+              ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
+            }
+
+            function moveSnake() {
+              if (!gameActive) return;
+              
+              const head = { x: snake[0].x, y: snake[0].y };
+              
+              const headPixelX = head.x * gridSize + gridSize / 2;
+              const headPixelY = head.y * gridSize + gridSize / 2;
+              const angleRad = Math.atan2(mouseY - headPixelY, mouseX - headPixelX);
+
+              const angleDeg = (angleRad * 180 / Math.PI + 360) % 360;
+              
+              if (angleDeg >= 315 || angleDeg < 45) {
+                  direction = 'right';
+              } else if (angleDeg >= 45 && angleDeg < 135) {
+                  direction = 'down';
+              } else if (angleDeg >= 135 && angleDeg < 225) {
+                  direction = 'left';
+              } else {
+                  direction = 'up';
+              }
+              
+              switch(direction) {
+                  case 'up': head.y--; break;
+                  case 'down': head.y++; break;
+                  case 'left': head.x--; break;
+                  case 'right': head.x++; break;
+              }
+              
+              if (head.x < 0 || head.x >= tileCount || 
+                  head.y < 0 || head.y >= tileCount) {
+                  gameOver();
+                  return;
+              }
+              
+              snake.unshift(head);
+              
+              if (head.x === food.x && head.y === food.y) {
+                  score += 10;
+                  scoreDisplay.textContent = `Score: ${score}`;
+                  if (score > highScore) {
+                      highScore = score;
+                      highScoreDisplay.textContent = `High Score: ${highScore}`;
+                  }
+                  placeFood();
+              } else {
+                  snake.pop();
+              }
+              
+              draw();
+            }
+
+            function gameOver() {
+              gameActive = false;
+              clearInterval(gameInterval);
+              startButton.textContent = 'Play Again';
+              startButton.disabled = false;
+              
+              ctx.fillStyle = '#ec6ba7'; 
+              ctx.font = '40px "Press Start 2P"';
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              
+              ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+              ctx.fillText('GAME OVER', canvas.width/2 + 2, canvas.height/2 + 2);
+              
+              ctx.fillStyle = '#ec6ba7';
+              ctx.fillText('GAME OVER', canvas.width/2, canvas.height/2);
+              
+              ctx.font = '20px "Press Start 2P"';
+              ctx.fillStyle = '#547dfd';  
+              ctx.fillText(`Final Score: ${score}`, canvas.width/2, canvas.height/2 + 50);
+            }
+
+            function startGame() {
+              if (gameInterval) {
+                  clearInterval(gameInterval);
+              }
+              gameActive = true;
+              startButton.disabled = true;
+              startButton.textContent = 'Playing...';
+              initializeGame();
+              gameInterval = setInterval(moveSnake, 100);
+            }
+
+            startButton.addEventListener('click', startGame);
+
+            initializeGame();
+            draw();
+          </script>
+          <!-- END OF SNAKE GAME -->
+
           <!-- FOOTER -->
           <footer class="footer">
             <div class="footer-content">
@@ -308,6 +480,73 @@
             </div>
           </footer>
           <!-- END OF FOOTER -->
+
+          <!-- SCROLLING LOADING ANIMATIONS -->
+          <script>
+            class ScrollAnimationHandler {
+              constructor(options = {}) {
+                this.options = {
+                  threshold: 0.2,
+                  root: null,
+                  rootMargin: "0px",
+                  ...options
+                };
+                
+                this.init();
+              }
+
+              init() {
+                this.observer = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        this.observer.unobserve(entry.target);
+                      }
+                    });
+                  },
+                  {
+                    threshold: this.options.threshold,
+                    root: this.options.root,
+                    rootMargin: this.options.rootMargin
+                  }
+                );
+
+                this.observeElements();
+              }
+
+              observeElements() {
+                const elements = document.querySelectorAll('.scroll-reveal');
+                elements.forEach(element => this.observer.observe(element));
+              }
+            }
+
+            // start animations when DOM is loaded
+            document.addEventListener('DOMContentLoaded', () => {
+              const elementsToAnimate = {
+                '.hero': 'reveal-sparkle',
+                '.about': 'reveal-float reveal-delay-1',
+                '.grid-item': 'reveal-twirl',
+                '.project-section': 'reveal-float',
+                '.skills-section': 'reveal-float reveal-delay-1',
+                '.drawing-section': 'reveal-sparkle reveal-delay-2',
+                '.skill-item': 'reveal-float',
+                '.footer': 'reveal-float reveal-delay-3'
+              };
+
+              Object.entries(elementsToAnimate).forEach(([selector, classes]) => {
+                document.querySelectorAll(selector).forEach(element => {
+                  element.classList.add('scroll-reveal', ...classes.split(' '));
+                });
+              });
+
+              new ScrollAnimationHandler({
+                threshold: 0.15,
+                rootMargin: "50px"
+              });
+            });
+          </script>
+          <!-- END OF SCROLLING LOADING ANIMATIONS -->
 
     </body>
 

@@ -760,3 +760,78 @@ ul.nav-items {
     padding: 0 1rem;
   }
 }
+
+/* ============= SCROLLING ANIMATION ============= */
+.scroll-reveal {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease-out, transform 1s ease-out;
+  will-change: opacity, visibility, transform;
+}
+
+.reveal-fade {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.scroll-reveal.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0) scale(1);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.2s;
+}
+
+/* custom animations */
+.hero.scroll-reveal {
+  transition-duration: 0.4s;
+}
+
+.about.scroll-reveal {
+  transition-duration: 0.2s;
+}
+
+.grid-item.scroll-reveal {
+  transition-duration: 0.2s;
+}
+
+.skills-section.scroll-reveal {
+  transition-duration: 0.2s;
+}
+
+@media (max-width: 768px) {
+  .scroll-reveal {
+    transition-duration: 0.5s !important;
+  }
+  
+  .reveal-left,
+  .reveal-right {
+    transform: translateX(0) translateY(50px);
+  }
+}
+/* ============= END OF SCROLLING ANIMATION ============= */
